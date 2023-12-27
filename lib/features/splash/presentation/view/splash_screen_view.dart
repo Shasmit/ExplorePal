@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:exploree_pal/config/constants/app_color_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -25,19 +26,27 @@ class _SplashScreenViewState extends ConsumerState<SplashScreenView> {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    final isTablet = screenSize.shortestSide >= 600;
-    return SizedBox(
-      height: double.infinity,
-      width: double.infinity,
-      child: isTablet
-          ? const Image(
-              image: AssetImage('assets/images/filmcratesplashtab.png'),
-              fit: BoxFit.cover,
-            )
-          : const Image(
-              image: AssetImage('assets/images/filmcratesplash.png'),
+    return Scaffold(
+      backgroundColor: AppColors.bodyColors,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              "assets/images/explorepal.png",
+              width: double.infinity,
+              height: screenSize.height * 0.25,
               fit: BoxFit.cover,
             ),
+            const SizedBox(
+              height: 30,
+            ),
+            CircularProgressIndicator(
+              color: AppColors.buttonColors,
+            )
+          ],
+        ),
+      ),
     );
   }
 }

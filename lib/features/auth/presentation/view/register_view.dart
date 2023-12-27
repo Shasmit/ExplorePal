@@ -1,4 +1,5 @@
 import 'package:exploree_pal/config/constants/app_color_theme.dart';
+import 'package:exploree_pal/config/constants/app_textstyle_theme.dart';
 import 'package:exploree_pal/config/router/app_route.dart';
 import 'package:exploree_pal/features/auth/domain/entity/user_entity.dart';
 import 'package:exploree_pal/features/auth/presentation/viewmodel/auth_view_model.dart';
@@ -23,12 +24,6 @@ class _RegisterViewsState extends ConsumerState<RegisterViews> {
     );
   }
 
-  SizedBox gapa() {
-    return const SizedBox(
-      height: 25.0,
-    );
-  }
-
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController username = TextEditingController();
@@ -37,29 +32,25 @@ class _RegisterViewsState extends ConsumerState<RegisterViews> {
   Widget build(BuildContext context) {
     // final authState = ref.watch(authViewModelProvider);
 
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    SizedBox gapa() {
+      return SizedBox(
+        height: screenHeight * 0.02,
+      );
+    }
+
     Widget padds(
-        String title,
-        double fonts,
-        double letters,
-        Color textcolor,
-        double left,
-        double right,
-        double top,
-        double bottom,
-        double wordSpace,
-        FontWeight weight) {
+      String title,
+      Color textcolor,
+      TextStyle styles,
+    ) {
       return Padding(
-        padding: EdgeInsets.fromLTRB(left, top, right, bottom),
+        padding: const EdgeInsets.fromLTRB(20, 10, 0, 5),
         child: Text(
           title,
-          style: TextStyle(
-            fontFamily: 'Dongle',
-            fontSize: fonts,
-            fontWeight: weight,
-            letterSpacing: letters,
-            wordSpacing: wordSpace,
-            color: textcolor,
-          ),
+          style: styles,
         ),
       );
     }
@@ -79,59 +70,41 @@ class _RegisterViewsState extends ConsumerState<RegisterViews> {
                   padding: const EdgeInsets.fromLTRB(5, 0, 5, 0),
                   child: IconButton(
                     icon: const Icon(Icons.arrow_back),
-                    iconSize: 28.0,
+                    iconSize: 25.0,
+                    color: AppColors.buttonColors,
                     onPressed: () {
                       Navigator.pushNamed(context, AppRoute.loginRoute);
                     },
                     alignment: Alignment.topLeft,
                   ),
                 ),
-                const AspectRatio(
-                  aspectRatio: 12 / 2.5,
-                  child: Image(
-                    image: AssetImage('assets/images/filmcrate.png'),
+                AspectRatio(
+                  aspectRatio: screenHeight * 0.015 / 3,
+                  child: const Image(
+                    image: AssetImage('assets/images/explorepal.png'),
                     fit: BoxFit.cover,
                   ),
                 ),
-                // gap(),
                 padds(
-                  'REGISTER',
-                  35.0,
-                  1.5,
+                  'Register',
                   AppColors.buttonNavBarColors,
-                  20,
-                  0,
-                  20,
-                  0,
-                  0,
-                  FontWeight.bold,
+                  AppTextStyle.poppinsSemiBold25,
                 ),
                 padds(
-                  'JOIN WITH US FOR FULL MASTI',
-                  28.0,
-                  0.2,
+                  'Join Us On the Journey',
                   AppColors.secondaryColors,
-                  20,
-                  10,
-                  0,
-                  0,
-                  0.5,
-                  FontWeight.normal,
+                  AppTextStyle.poppins18,
+                ),
+                SizedBox(
+                  height: screenHeight * 0.01,
                 ),
                 padds(
                   'Username',
-                  35.0,
-                  1.0,
                   AppColors.buttonNavBarColors,
-                  20,
-                  10,
-                  0,
-                  0,
-                  0,
-                  FontWeight.w500,
+                  AppTextStyle.poppinsMedium18,
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                  padding: const EdgeInsets.fromLTRB(20, 5, 20, 0),
                   child: TextFormField(
                     controller: username,
                     validator: (text) {
@@ -143,6 +116,10 @@ class _RegisterViewsState extends ConsumerState<RegisterViews> {
                       }
                       return null;
                     },
+                    style: const TextStyle(
+                      fontSize: 14.0,
+                      fontFamily: "Poppins",
+                    ),
                     decoration: InputDecoration(
                       errorBorder: OutlineInputBorder(
                         borderSide: const BorderSide(
@@ -163,7 +140,8 @@ class _RegisterViewsState extends ConsumerState<RegisterViews> {
                       contentPadding: const EdgeInsets.all(15),
                       hintText: 'Enter your username',
                       hintStyle: const TextStyle(
-                        fontSize: 15.0,
+                        fontSize: 14.0,
+                        fontFamily: 'Poppins',
                       ),
                     ),
                     cursorColor: AppColors.buttonNavBarColors,
@@ -172,18 +150,11 @@ class _RegisterViewsState extends ConsumerState<RegisterViews> {
                 gap(),
                 padds(
                   'Email',
-                  35.0,
-                  1.0,
                   AppColors.buttonNavBarColors,
-                  20,
-                  10,
-                  0,
-                  0,
-                  0,
-                  FontWeight.w500,
+                  AppTextStyle.poppinsMedium18,
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                  padding: const EdgeInsets.fromLTRB(20, 5, 20, 10),
                   child: TextFormField(
                     controller: email,
                     validator: (text) {
@@ -197,6 +168,10 @@ class _RegisterViewsState extends ConsumerState<RegisterViews> {
                       }
                       return null;
                     },
+                    style: const TextStyle(
+                      fontSize: 14.0,
+                      fontFamily: "Poppins",
+                    ),
                     decoration: InputDecoration(
                       errorBorder: OutlineInputBorder(
                         borderSide: const BorderSide(
@@ -217,7 +192,8 @@ class _RegisterViewsState extends ConsumerState<RegisterViews> {
                       contentPadding: const EdgeInsets.all(15),
                       hintText: 'Enter your email',
                       hintStyle: const TextStyle(
-                        fontSize: 15.0,
+                        fontSize: 14.0,
+                        fontFamily: "Poppins",
                       ),
                     ),
                     cursorColor: AppColors.buttonNavBarColors,
@@ -226,18 +202,11 @@ class _RegisterViewsState extends ConsumerState<RegisterViews> {
                 gap(),
                 padds(
                   'Password',
-                  35.0,
-                  1.0,
                   AppColors.buttonNavBarColors,
-                  20,
-                  10,
-                  0,
-                  0,
-                  0,
-                  FontWeight.w500,
+                  AppTextStyle.poppinsMedium18,
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                  padding: const EdgeInsets.fromLTRB(20, 5, 20, 10),
                   child: TextFormField(
                     obscureText: _isObscure,
                     controller: password,
@@ -250,6 +219,10 @@ class _RegisterViewsState extends ConsumerState<RegisterViews> {
                       }
                       return null;
                     },
+                    style: const TextStyle(
+                      fontSize: 14.0,
+                      fontFamily: "Poppins",
+                    ),
                     decoration: InputDecoration(
                       errorBorder: OutlineInputBorder(
                         borderSide: const BorderSide(
@@ -270,7 +243,8 @@ class _RegisterViewsState extends ConsumerState<RegisterViews> {
                       contentPadding: const EdgeInsets.all(15),
                       hintText: 'Enter your password',
                       hintStyle: const TextStyle(
-                        fontSize: 15.0,
+                        fontSize: 14.0,
+                        fontFamily: "Poppins",
                       ),
                       suffixIcon: Align(
                         widthFactor: 1.5,
@@ -294,18 +268,11 @@ class _RegisterViewsState extends ConsumerState<RegisterViews> {
                 gap(),
                 padds(
                   'Confirm Password',
-                  35.0,
-                  1.0,
                   AppColors.buttonNavBarColors,
-                  20,
-                  10,
-                  0,
-                  0,
-                  0,
-                  FontWeight.w500,
+                  AppTextStyle.poppinsMedium18,
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                  padding: const EdgeInsets.fromLTRB(20, 5, 20, 10),
                   child: TextFormField(
                     obscureText: _isObscure1,
                     controller: confirmpass,
@@ -318,6 +285,10 @@ class _RegisterViewsState extends ConsumerState<RegisterViews> {
                       }
                       return null;
                     },
+                    style: const TextStyle(
+                      fontSize: 14.0,
+                      fontFamily: "Poppins",
+                    ),
                     decoration: InputDecoration(
                       errorBorder: OutlineInputBorder(
                         borderSide: const BorderSide(
@@ -338,7 +309,8 @@ class _RegisterViewsState extends ConsumerState<RegisterViews> {
                       contentPadding: const EdgeInsets.all(15),
                       hintText: 'Enter your password',
                       hintStyle: const TextStyle(
-                        fontSize: 15.0,
+                        fontSize: 14.0,
+                        fontFamily: "Poppins",
                       ),
                       suffixIcon: Align(
                         widthFactor: 1.5,
@@ -361,10 +333,9 @@ class _RegisterViewsState extends ConsumerState<RegisterViews> {
                 ),
                 gapa(),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
+                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                   child: SizedBox(
                     width: double.infinity,
-                    height: 65.0,
                     child: ElevatedButton(
                       onPressed: () {
                         if (registerkey.currentState!.validate()) {
@@ -379,13 +350,14 @@ class _RegisterViewsState extends ConsumerState<RegisterViews> {
                               .registerUser(context, user);
                         }
                       },
-                      child: const Text(
-                        'REGISTER',
-                        style: TextStyle(
-                          fontFamily: 'Dongle',
-                          fontWeight: FontWeight.w600,
-                          letterSpacing: 1.2,
-                          fontSize: 35.0,
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Text(
+                          'REGISTER',
+                          style: AppTextStyle.poppinsSemiBold20.copyWith(
+                            color: Colors.white,
+                            letterSpacing: 1.2,
+                          ),
                         ),
                       ),
                     ),

@@ -1,4 +1,5 @@
 import 'package:exploree_pal/config/constants/app_color_theme.dart';
+import 'package:exploree_pal/config/constants/app_textstyle_theme.dart';
 import 'package:exploree_pal/features/auth/presentation/viewmodel/auth_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -16,40 +17,30 @@ class _LoginViewsState extends ConsumerState<LoginViews> {
   bool _isObscure = true;
   final pinkey = GlobalKey<FormState>();
 
-  SizedBox gap() {
-    return const SizedBox(
-      height: 15.0,
-    );
-  }
-
   TextEditingController username = TextEditingController();
   TextEditingController password = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    SizedBox gap() {
+      return SizedBox(
+        height: screenHeight * 0.025,
+      );
+    }
+
     Widget padds(
-        String title,
-        double fonts,
-        double letters,
-        Color textcolor,
-        double left,
-        double right,
-        double top,
-        double bottom,
-        double wordSpace,
-        FontWeight weight) {
+      String title,
+      Color textcolor,
+      TextStyle styles,
+    ) {
       return Padding(
-        padding: EdgeInsets.fromLTRB(left, top, right, bottom),
+        padding: const EdgeInsets.fromLTRB(20, 10, 0, 5),
         child: Text(
           title,
-          style: TextStyle(
-            fontFamily: 'Poppins',
-            fontSize: fonts,
-            fontWeight: weight,
-            letterSpacing: letters,
-            wordSpacing: wordSpace,
-            color: textcolor,
-          ),
+          style: styles,
         ),
       );
     }
@@ -77,31 +68,31 @@ class _LoginViewsState extends ConsumerState<LoginViews> {
                 //   ),
                 // ),
                 const AspectRatio(
-                  aspectRatio: 12 / 3,
+                  aspectRatio: 12 / 5,
                   child: Image(
-                    image: AssetImage('assets/images/filmcrate.png'),
+                    image: AssetImage('assets/images/explorepal.png'),
                     fit: BoxFit.cover,
                   ),
                 ),
                 gap(),
-                padds('LOGIN', 35.0, 1.5, AppColors.buttonNavBarColors, 20, 0,
-                    20, 0, 0, FontWeight.bold),
                 padds(
-                    'WELCOME TO THE WORLD OF MOVIES',
-                    28.0,
-                    0.2,
-                    AppColors.secondaryColors,
-                    20,
-                    10,
-                    0,
-                    0,
-                    0.5,
-                    FontWeight.normal),
+                  'Login',
+                  AppColors.buttonNavBarColors,
+                  AppTextStyle.poppinsSemiBold25,
+                ),
+                padds(
+                  'Your Destination Is In Your Hands',
+                  AppColors.secondaryColors,
+                  AppTextStyle.poppins18,
+                ),
                 gap(),
-                padds('Username', 35.0, 1.0, Colors.black, 20, 10, 0, 0, 0,
-                    FontWeight.w500),
+                padds(
+                  'Username',
+                  AppColors.buttonNavBarColors,
+                  AppTextStyle.poppinsMedium18,
+                ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                  padding: const EdgeInsets.fromLTRB(20, 5, 20, 0),
                   child: TextFormField(
                     key: const ValueKey('username'),
                     controller: username,
@@ -111,6 +102,10 @@ class _LoginViewsState extends ConsumerState<LoginViews> {
                       }
                       return null;
                     },
+                    style: const TextStyle(
+                      fontSize: 14.0,
+                      fontFamily: "Poppins",
+                    ),
                     decoration: InputDecoration(
                       errorBorder: OutlineInputBorder(
                         borderSide: BorderSide(
@@ -128,20 +123,24 @@ class _LoginViewsState extends ConsumerState<LoginViews> {
                             BorderSide(color: AppColors.secondaryColors),
                         borderRadius: BorderRadius.circular(10.0),
                       ),
-                      contentPadding: const EdgeInsets.all(20),
+                      contentPadding: const EdgeInsets.all(15),
                       hintText: 'Enter your username',
                       hintStyle: const TextStyle(
-                        fontSize: 15.0,
+                        fontSize: 14.0,
+                        fontFamily: "Poppins",
                       ),
                     ),
                     cursorColor: Colors.black,
                   ),
                 ),
                 gap(),
-                padds('Password', 35.0, 1.0, Colors.black, 20, 10, 0, 0, 0,
-                    FontWeight.w500),
+                padds(
+                  'Password',
+                  AppColors.buttonNavBarColors,
+                  AppTextStyle.poppinsMedium18,
+                ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                  padding: const EdgeInsets.fromLTRB(20, 5, 20, 0),
                   child: TextFormField(
                     key: const ValueKey('password'),
                     obscureText: _isObscure,
@@ -155,6 +154,10 @@ class _LoginViewsState extends ConsumerState<LoginViews> {
                       }
                       return null;
                     },
+                    style: const TextStyle(
+                      fontSize: 14.0,
+                      fontFamily: "Poppins",
+                    ),
                     decoration: InputDecoration(
                       errorBorder: OutlineInputBorder(
                         borderSide: BorderSide(
@@ -172,10 +175,11 @@ class _LoginViewsState extends ConsumerState<LoginViews> {
                             BorderSide(color: AppColors.secondaryColors),
                         borderRadius: BorderRadius.circular(10.0),
                       ),
-                      contentPadding: const EdgeInsets.all(20),
+                      contentPadding: const EdgeInsets.all(15),
                       hintText: 'Enter your password',
                       hintStyle: const TextStyle(
-                        fontSize: 15.0,
+                        fontSize: 14.0,
+                        fontFamily: "Poppins",
                       ),
                       suffixIcon: Align(
                         widthFactor: 1.5,
@@ -196,29 +200,8 @@ class _LoginViewsState extends ConsumerState<LoginViews> {
                     cursorColor: Colors.black,
                   ),
                 ),
-                // Padding(
-                //   padding: const EdgeInsets.fromLTRB(20, 0, 10, 0),
-                //   child: Align(
-                //     alignment: Alignment.bottomRight,
-                //     child: TextButton(
-                //       onPressed: () {
-                //         Navigator.pushNamed(context, AppRoute.updatePassword);
-                //       },
-                //       child: const Text(
-                //         'Forgot Password?',
-                //         style: TextStyle(
-                //           fontFamily: 'Dongle',
-                //           fontSize: 28.0,
-                //           letterSpacing: 0.2,
-                //           color: AppColors.buttonNavBarColors,
-                //         ),
-                //       ),
-                //     ),
-                //   ),
-                // ),
-                // gap(),
-                const SizedBox(
-                  height: 45,
+                SizedBox(
+                  height: screenHeight * 0.07,
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
@@ -237,15 +220,13 @@ class _LoginViewsState extends ConsumerState<LoginViews> {
                               );
                         }
                       },
-                      child: const Padding(
-                        padding: EdgeInsets.all(5.0),
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
                         child: Text(
                           'LOGIN',
-                          style: TextStyle(
-                            fontFamily: 'Dongle',
-                            fontWeight: FontWeight.w600,
+                          style: AppTextStyle.poppinsSemiBold20.copyWith(
+                            color: Colors.white,
                             letterSpacing: 1.2,
-                            fontSize: 35.0,
                           ),
                         ),
                       ),
@@ -261,9 +242,8 @@ class _LoginViewsState extends ConsumerState<LoginViews> {
                       const Text(
                         "Don't have an account?",
                         style: TextStyle(
-                          fontFamily: 'Dongle',
-                          fontSize: 28.0,
-                          fontWeight: FontWeight.w500,
+                          fontFamily: 'Poppins',
+                          fontSize: 15.0,
                           // wordSpacing: 0.8,
                         ),
                       ),
@@ -274,9 +254,8 @@ class _LoginViewsState extends ConsumerState<LoginViews> {
                         child: Text(
                           'Register',
                           style: TextStyle(
-                            fontFamily: 'Dongle',
-                            fontSize: 28.0,
-                            fontWeight: FontWeight.w500,
+                            fontFamily: 'PoppinsMedium',
+                            fontSize: 15.0,
                             letterSpacing: 0.9,
                             color: AppColors.buttonColors,
                           ),
