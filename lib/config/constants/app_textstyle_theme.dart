@@ -70,6 +70,12 @@ class AppTextStyle {
     fontFamily: 'PoppinsSemiBold',
   );
 
+  static TextStyle poppinsSemiBold22 = TextStyle(
+    fontSize: 22,
+    color: AppColors.buttonNavBarColors,
+    fontFamily: 'PoppinsSemiBold',
+  );
+
   static TextStyle poppinsSemiBold25 = TextStyle(
     fontSize: 25,
     color: AppColors.buttonNavBarColors,

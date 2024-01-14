@@ -1,7 +1,8 @@
 import 'package:exploree_pal/features/auth/presentation/view/login_view.dart';
 import 'package:exploree_pal/features/auth/presentation/view/register_view.dart';
-import 'package:exploree_pal/features/home/presentation/view/dashboard.dart';
 import 'package:exploree_pal/features/splash/presentation/view/splash_screen_view.dart';
+
+import '../../features/home/presentation/view/bottom_navigation.dart';
 
 class AppRoute {
   AppRoute._();
@@ -26,7 +27,7 @@ class AppRoute {
       splashRoute: (context) => const SplashScreenView(),
       loginRoute: (context) => const LoginViews(),
       registerRoute: (context) => const RegisterViews(),
-      dashboardRoute: (context) => const DashBoardView(),
+      dashboardRoute: (context) => const BottomNavView(),
     };
   }
 }
