@@ -10,4 +10,6 @@ class AppColors {
   static Color buttonColors = const Color(0xff557571);
   static Color buttonNavBarColors = const Color(0xff121212);
   static Color secondaryColors = const Color(0xff6F7789);
+  static Color tabColors = const Color(0xffF36D72);
+  static Color ratingColors = const Color(0xffEE684A);
 }

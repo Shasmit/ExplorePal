@@ -4,6 +4,12 @@ import 'package:flutter/material.dart';
 class AppTextStyle {
   AppTextStyle._();
 
+  static TextStyle poppins13 = TextStyle(
+    fontSize: 13,
+    color: AppColors.buttonNavBarColors,
+    fontFamily: 'Poppins',
+  );
+
   static TextStyle poppins15 = TextStyle(
     fontSize: 15,
     color: AppColors.buttonNavBarColors,

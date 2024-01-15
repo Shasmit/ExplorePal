@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "place_image": "path/to/place1_image.jpg",
+    "place_title": "Serenity Lake",
+    "place_rating": 4.7,
+    "place_location": "Tranquil Valley, ABC",
+    "place_description": "A peaceful lake surrounded by lush forests and hills.",
+    "place_photo": [
+      "path/to/place1_photo1.jpg",
+      "path/to/place1_photo2.jpg",
+      "path/to/place1_photo3.jpg"
+    ],
+    "place_video": "path/to/place1_video.mp4"
+  },
+  {
+    "id": 2,
+    "place_image": "path/to/place2_image.jpg",
+    "place_title": "Historic Castle",
+    "place_rating": 4.5,
+    "place_location": "Medieval Town, XYZ",
+    "place_description": "An ancient castle with rich history and stunning architecture.",
+    "place_photo": [
+      "path/to/place2_photo1.jpg",
+      "path/to/place2_photo2.jpg",
+      "path/to/place2_photo3.jpg"
+    ],
+    "place_video": "path/to/place2_video.mp4"
+  },
+  {
+    "id": 3,
+    "place_image": "path/to/place3_image.jpg",
+    "place_title": "Skyline Viewpoint",
+    "place_rating": 4.8,
+    "place_location": "City Heights, PQR",
+    "place_description": "A high vantage point offering breathtaking views of the city skyline.",
+    "place_photo": [
+      "path/to/place3_photo1.jpg",
+      "path/to/place3_photo2.jpg",
+      "path/to/place3_photo3.jpg"
+    ],
+    "place_video": "path/to/place3_video.mp4"
+  },
+  {
+    "id": 4,
+    "place_image": "path/to/place4_image.jpg",
+    "place_title": "Enchanted Forest",
+    "place_rating": 4.6,
+    "place_location": "Mystical Woods, LMN",
+    "place_description": "A magical forest with ancient trees and hidden wonders.",
+    "place_photo": [
+      "path/to/place4_photo1.jpg",
+      "path/to/place4_photo2.jpg",
+      "path/to/place4_photo3.jpg"
+    ],
+    "place_video": "path/to/place4_video.mp4"
+  }
+]

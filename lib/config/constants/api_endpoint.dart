@@ -3,8 +3,8 @@ class ApiEndpoints {
 
   static const Duration connectionTimeout = Duration(seconds: 1000);
   static const Duration receiveTimeout = Duration(seconds: 1000);
-  static const String baseUrl = "http://10.0.2.2:3001/";
-  // static const String baseUrl = "http://192.168.137.1:3001/";
+  // static const String baseUrl = "http://10.0.2.2:3001/";
+  static const String baseUrl = "http://192.168.137.1:3001/";
 
   // ====================== Auth Routes ======================
   static const String login = "users/login";
