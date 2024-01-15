@@ -1,5 +1,6 @@
 import 'package:exploree_pal/config/constants/app_color_theme.dart';
 import 'package:exploree_pal/config/constants/app_textstyle_theme.dart';
+import 'package:exploree_pal/config/router/app_route.dart';
 import 'package:exploree_pal/core/common/widget/injection_container.dart';
 import 'package:exploree_pal/features/home/domain/entity/places_entity.dart';
 import 'package:exploree_pal/features/home/presentation/bloc/place_bloc.dart';
@@ -180,122 +181,142 @@ class _DashBoardViewState extends ConsumerState<DashBoardView> {
                                 left: screenWidth * 0.05,
                                 top: screenHeight * 0.02,
                               ),
-                              child: Container(
-                                width: screenWidth * 0.8,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: Colors.white,
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.all(
-                                    screenWidth * 0.03,
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                    context,
+                                    AppRoute.aboutPlacesRoute,
+                                    arguments: placesDetails[index],
+                                  );
+                                },
+                                child: Container(
+                                  width: screenWidth * 0.8,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Colors.white,
                                   ),
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        width: screenWidth * 0.8,
-                                        height: screenHeight * 0.2,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(15),
-                                          image: DecorationImage(
-                                            image: NetworkImage(
-                                              placesDetails.isEmpty
-                                                  ? "https://picknepal.com/wp-content/uploads/2020/06/Rara-Lake-1.jpg"
-                                                  : placesDetails[index]
-                                                      .placeImage!,
+                                  child: Padding(
+                                    padding: EdgeInsets.all(
+                                      screenWidth * 0.03,
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          width: screenWidth * 0.8,
+                                          height: screenHeight * 0.2,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                            image: DecorationImage(
+                                              image: NetworkImage(
+                                                placesDetails.isEmpty
+                                                    ? "https://picknepal.com/wp-content/uploads/2020/06/Rara-Lake-1.jpg"
+                                                    : placesDetails[index]
+                                                        .placeImage!,
+                                              ),
+                                              fit: BoxFit.cover,
                                             ),
-                                            fit: BoxFit.cover,
+                                            color: Colors.red,
                                           ),
-                                          color: Colors.red,
                                         ),
-                                      ),
-                                      SizedBox(
-                                        height: screenHeight * 0.01,
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.only(
-                                          left: screenWidth * 0.02,
-                                          right: screenWidth * 0.02,
+                                        SizedBox(
+                                          height: screenHeight * 0.01,
                                         ),
-                                        child: Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Text(
-                                              "Rara Lake",
-                                              style: AppTextStyle
-                                                  .poppinsSemiBold18,
-                                            ),
-                                            Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              children: [
-                                                Icon(
-                                                  Icons.star,
-                                                  size: 20,
-                                                  color: AppColors.ratingColors,
-                                                ),
-                                                SizedBox(
-                                                  width: screenWidth * 0.01,
-                                                ),
-                                                Text(
-                                                  "4.8",
-                                                  style: AppTextStyle
-                                                      .poppinsMedium18
-                                                      .copyWith(
-                                                    color: AppColors
-                                                        .secondaryColors,
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                            left: screenWidth * 0.02,
+                                            right: screenWidth * 0.02,
+                                          ),
+                                          child: Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                placesDetails.isEmpty
+                                                    ? ""
+                                                    : placesDetails[index]
+                                                        .placeTitle!,
+                                                style: AppTextStyle
+                                                    .poppinsSemiBold18,
+                                              ),
+                                              Row(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  Icon(
+                                                    Icons.star,
+                                                    size: 20,
+                                                    color:
+                                                        AppColors.ratingColors,
                                                   ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: screenHeight * 0.01,
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsets.only(
-                                          left: screenWidth * 0.01,
-                                        ),
-                                        child: Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              children: [
-                                                Icon(
-                                                  Icons.location_on,
-                                                  size: 20,
-                                                  color:
-                                                      AppColors.secondaryColors,
-                                                ),
-                                                SizedBox(
-                                                  width: screenWidth * 0.01,
-                                                ),
-                                                Text(
-                                                  "Mugu",
-                                                  style: AppTextStyle
-                                                      .poppinsMedium15
-                                                      .copyWith(
-                                                    color: AppColors
-                                                        .secondaryColors,
+                                                  SizedBox(
+                                                    width: screenWidth * 0.01,
                                                   ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
+                                                  Text(
+                                                    placesDetails.isEmpty
+                                                        ? ""
+                                                        : placesDetails[index]
+                                                            .placeRating
+                                                            .toString(),
+                                                    style: AppTextStyle
+                                                        .poppinsMedium18
+                                                        .copyWith(
+                                                      color: AppColors
+                                                          .secondaryColors,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                        SizedBox(
+                                          height: screenHeight * 0.01,
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                            left: screenWidth * 0.01,
+                                          ),
+                                          child: Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Row(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  Icon(
+                                                    Icons.location_on,
+                                                    size: 20,
+                                                    color:
+                                                        AppColors.ratingColors,
+                                                  ),
+                                                  SizedBox(
+                                                    width: screenWidth * 0.01,
+                                                  ),
+                                                  Text(
+                                                    placesDetails.isEmpty
+                                                        ? ""
+                                                        : placesDetails[index]
+                                                            .placeLocation!,
+                                                    style: AppTextStyle
+                                                        .poppinsMedium15
+                                                        .copyWith(
+                                                      color: AppColors
+                                                          .secondaryColors,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -369,7 +390,10 @@ class _DashBoardViewState extends ConsumerState<DashBoardView> {
                                           MainAxisAlignment.center,
                                       children: [
                                         Text(
-                                          "Rara Lake",
+                                          placesDetails.isEmpty
+                                              ? ""
+                                              : placesDetails[index]
+                                                  .placeTitle!,
                                           style: AppTextStyle.poppinsMedium18
                                               .copyWith(
                                             color: AppColors.buttonNavBarColors,
@@ -393,7 +417,10 @@ class _DashBoardViewState extends ConsumerState<DashBoardView> {
                                               width: screenWidth * 0.01,
                                             ),
                                             Text(
-                                              "Mugu",
+                                              placesDetails.isEmpty
+                                                  ? ""
+                                                  : placesDetails[index]
+                                                      .placeLocation!,
                                               style: AppTextStyle
                                                   .poppinsMedium15
                                                   .copyWith(
@@ -422,7 +449,11 @@ class _DashBoardViewState extends ConsumerState<DashBoardView> {
                                               width: screenWidth * 0.01,
                                             ),
                                             Text(
-                                              "4.8",
+                                              placesDetails.isEmpty
+                                                  ? ""
+                                                  : placesDetails[index]
+                                                      .placeRating
+                                                      .toString(),
                                               style: AppTextStyle
                                                   .poppinsMedium18
                                                   .copyWith(
@@ -512,7 +543,10 @@ class _DashBoardViewState extends ConsumerState<DashBoardView> {
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
-                                              "Rara Lake",
+                                              placesDetails.isEmpty
+                                                  ? ""
+                                                  : placesDetails[index]
+                                                      .placeTitle!,
                                               style: AppTextStyle
                                                   .poppinsSemiBold18,
                                             ),
@@ -529,7 +563,11 @@ class _DashBoardViewState extends ConsumerState<DashBoardView> {
                                                   width: screenWidth * 0.01,
                                                 ),
                                                 Text(
-                                                  "4.8",
+                                                  placesDetails.isEmpty
+                                                      ? ""
+                                                      : placesDetails[index]
+                                                          .placeRating
+                                                          .toString(),
                                                   style: AppTextStyle
                                                       .poppinsMedium18
                                                       .copyWith(
@@ -569,7 +607,10 @@ class _DashBoardViewState extends ConsumerState<DashBoardView> {
                                                   width: screenWidth * 0.01,
                                                 ),
                                                 Text(
-                                                  "Mugu",
+                                                  placesDetails.isEmpty
+                                                      ? ""
+                                                      : placesDetails[index]
+                                                          .placeLocation!,
                                                   style: AppTextStyle
                                                       .poppinsMedium15
                                                       .copyWith(
@@ -660,7 +701,10 @@ class _DashBoardViewState extends ConsumerState<DashBoardView> {
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
-                                              "Rara Lake",
+                                              placesDetails.isEmpty
+                                                  ? ""
+                                                  : placesDetails[index]
+                                                      .placeTitle!,
                                               style: AppTextStyle
                                                   .poppinsSemiBold18,
                                             ),
@@ -677,7 +721,11 @@ class _DashBoardViewState extends ConsumerState<DashBoardView> {
                                                   width: screenWidth * 0.01,
                                                 ),
                                                 Text(
-                                                  "4.8",
+                                                  placesDetails.isEmpty
+                                                      ? ""
+                                                      : placesDetails[index]
+                                                          .placeRating
+                                                          .toString(),
                                                   style: AppTextStyle
                                                       .poppinsMedium18
                                                       .copyWith(
@@ -717,7 +765,10 @@ class _DashBoardViewState extends ConsumerState<DashBoardView> {
                                                   width: screenWidth * 0.01,
                                                 ),
                                                 Text(
-                                                  "Mugu",
+                                                  placesDetails.isEmpty
+                                                      ? ""
+                                                      : placesDetails[index]
+                                                          .placeLocation!,
                                                   style: AppTextStyle
                                                       .poppinsMedium15
                                                       .copyWith(
@@ -808,7 +859,10 @@ class _DashBoardViewState extends ConsumerState<DashBoardView> {
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
-                                              "Rara Lake",
+                                              placesDetails.isEmpty
+                                                  ? ""
+                                                  : placesDetails[index]
+                                                      .placeTitle!,
                                               style: AppTextStyle
                                                   .poppinsSemiBold18,
                                             ),
@@ -825,7 +879,11 @@ class _DashBoardViewState extends ConsumerState<DashBoardView> {
                                                   width: screenWidth * 0.01,
                                                 ),
                                                 Text(
-                                                  "4.8",
+                                                  placesDetails.isEmpty
+                                                      ? ""
+                                                      : placesDetails[index]
+                                                          .placeRating
+                                                          .toString(),
                                                   style: AppTextStyle
                                                       .poppinsMedium18
                                                       .copyWith(
@@ -865,7 +923,10 @@ class _DashBoardViewState extends ConsumerState<DashBoardView> {
                                                   width: screenWidth * 0.01,
                                                 ),
                                                 Text(
-                                                  "Mugu",
+                                                  placesDetails.isEmpty
+                                                      ? ""
+                                                      : placesDetails[index]
+                                                          .placeLocation!,
                                                   style: AppTextStyle
                                                       .poppinsMedium15
                                                       .copyWith(

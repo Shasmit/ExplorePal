@@ -5,13 +5,14 @@
     "place_title": "Serenity Lake",
     "place_rating": 4.7,
     "place_location": "Tranquil Valley, ABC",
-    "place_description": "A peaceful lake surrounded by lush forests and hills.",
+    "place_description": "Rara Lake lies at an elevation of 2,990 m (9,810 ft), has a water surface of 10.8 km2 (4.2 sq mi), a maximum depth of 167 m (548 ft), is 5.1 km (3.2 mi) long and 2.7 km (1.7 mi) wide. It drains into the Mugu Karnali River via the Nijar River.[7] Its water quality is characterized by high pH, conductivity and total hardness. It has been classified as oligotrophic as it is slightly polluted.[8] The lake changes its colour up to 5 times a day depending on the climate.[9][10][11] Rara Lake is surrounded by thickly forested hills named Chuchemara Danda at 4,087 meters and Murma at 3630m",
     "place_photo": [
       "path/to/place1_photo1.jpg",
       "path/to/place1_photo2.jpg",
       "path/to/place1_photo3.jpg"
     ],
-    "place_video": "path/to/place1_video.mp4"
+    "place_video": "path/to/place1_video.mp4",
+    "isWatchListed" : false
   },
   {
     "id": 2,
@@ -25,7 +26,9 @@
       "path/to/place2_photo2.jpg",
       "path/to/place2_photo3.jpg"
     ],
-    "place_video": "path/to/place2_video.mp4"
+    "place_video": "path/to/place2_video.mp4",
+    "isWatchListed" : false
+
   },
   {
     "id": 3,
@@ -39,7 +42,9 @@
       "path/to/place3_photo2.jpg",
       "path/to/place3_photo3.jpg"
     ],
-    "place_video": "path/to/place3_video.mp4"
+    "place_video": "path/to/place3_video.mp4",
+    "isWatchListed" : false
+
   },
   {
     "id": 4,
@@ -53,6 +58,8 @@
       "path/to/place4_photo2.jpg",
       "path/to/place4_photo3.jpg"
     ],
-    "place_video": "path/to/place4_video.mp4"
+    "place_video": "path/to/place4_video.mp4",
+    "isWatchListed" : false
+
   }
 ]

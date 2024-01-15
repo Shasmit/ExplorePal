@@ -1,5 +1,6 @@
 import 'package:exploree_pal/features/auth/presentation/view/login_view.dart';
 import 'package:exploree_pal/features/auth/presentation/view/register_view.dart';
+import 'package:exploree_pal/features/home/presentation/view/about_places.dart';
 import 'package:exploree_pal/features/splash/presentation/view/splash_screen_view.dart';
 
 import '../../features/home/presentation/view/bottom_navigation.dart';
@@ -12,15 +13,7 @@ class AppRoute {
   static const String loginRoute = '/login';
   static const String registerRoute = '/register';
   static const String dashboardRoute = '/dashboard';
-  static const String movieRoute = '/movies';
-  static const String editprofileRoute = '/edit';
-  static const String profileRoute = '/profile';
-  static const String updatePassword = '/update';
-  static const String resetPassword = '/reset';
-  static const String allReviews = '/allReviews';
-  static const String movieScreen = '/movieScreen';
-  static const String writeReview = '/writeReview';
-  static const String updateReview = '/updateReview';
+  static const String aboutPlacesRoute = '/aboutPlaces';
 
   static getApplicationRoute() {
     return {
@@ -28,6 +21,7 @@ class AppRoute {
       loginRoute: (context) => const LoginViews(),
       registerRoute: (context) => const RegisterViews(),
       dashboardRoute: (context) => const BottomNavView(),
+      aboutPlacesRoute: (context) => const AboutPlaceView(),
     };
   }
 }
