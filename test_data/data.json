@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "place_image": "path/to/place1_image.jpg",
+    "place_image": "https://picknepal.com/wp-content/uploads/2020/06/Rara-Lake-1.jpg",
     "place_title": "Serenity Lake",
     "place_rating": 4.7,
     "place_location": "Tranquil Valley, ABC",
@@ -15,7 +15,7 @@
   },
   {
     "id": 2,
-    "place_image": "path/to/place2_image.jpg",
+    "place_image": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Rara_lake%2C_Mugu.jpg",
     "place_title": "Historic Castle",
     "place_rating": 4.5,
     "place_location": "Medieval Town, XYZ",
@@ -29,7 +29,7 @@
   },
   {
     "id": 3,
-    "place_image": "path/to/place3_image.jpg",
+    "place_image": "https://web.nepalnews.com/storage/story/1024/image_1607335331_1024.jpg",
     "place_title": "Skyline Viewpoint",
     "place_rating": 4.8,
     "place_location": "City Heights, PQR",
@@ -43,7 +43,7 @@
   },
   {
     "id": 4,
-    "place_image": "path/to/place4_image.jpg",
+    "place_image": "https://imagepasal.com/wp-content/uploads/2022/03/F3EE020E-07D4-4F08-8E9D-D5FB9F7A0B4B-image-pasal-2022-03-15.jpeg",
     "place_title": "Enchanted Forest",
     "place_rating": 4.6,
     "place_location": "Mystical Woods, LMN",

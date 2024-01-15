@@ -14,8 +14,7 @@ class PlaceDetailsBloc extends Bloc<PlaceDetailsEvent, PlaceDetailsState> {
 
   PlaceDetailsBloc({required this.getPlaceDetailsUseCase})
       : super(PlaceDetailsInitial()) {
-    on<PlaceDetailsInit>((event, emit) {});
-    on<PlaceDetailsLoad>(
+    on<PlaceDetailsInit>(
       (event, emit) async {
         emit(PlaceDetailsLoading());
         final result = await getPlaceDetailsUseCase(NoParams());
@@ -35,7 +34,6 @@ class PlaceDetailsBloc extends Bloc<PlaceDetailsEvent, PlaceDetailsState> {
             emit(
               PlaceDetailsLoaded(placesDetails: r),
             );
-            event.loaded();
           },
         );
       },

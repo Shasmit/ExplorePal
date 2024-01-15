@@ -8,12 +8,3 @@ abstract class PlaceDetailsEvent extends Equatable {
 }
 
 class PlaceDetailsInit extends PlaceDetailsEvent {}
-
-class PlaceDetailsLoad extends PlaceDetailsEvent {
-  final void Function() loaded;
-
-  const PlaceDetailsLoad({required this.loaded});
-
-  @override
-  List<Object> get props => [loaded];
-}
