@@ -369,14 +369,31 @@ class _AboutPlaceViewState extends ConsumerState<AboutPlaceView> {
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
                                                 children: [
-                                                  Text(
-                                                    'Weather Details',
-                                                    style: AppTextStyle
-                                                        .poppinsSemiBold18,
-                                                  ),
-                                                  SizedBox(
-                                                    height:
-                                                        screenHeight * 0.015,
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Text(
+                                                        'Weather Details',
+                                                        style: AppTextStyle
+                                                            .poppinsSemiBold18,
+                                                      ),
+                                                      SizedBox(
+                                                        height: screenHeight *
+                                                            0.015,
+                                                      ),
+                                                      Image.network(
+                                                        'https://openweathermap.org/img/wn/${weatherDetails.weather![0].icon}@2x.png',
+                                                        height:
+                                                            screenHeight * 0.08,
+                                                        width:
+                                                            screenWidth * 0.15,
+                                                      ),
+                                                    ],
                                                   ),
                                                   Row(
                                                     mainAxisAlignment:
@@ -388,13 +405,20 @@ class _AboutPlaceViewState extends ConsumerState<AboutPlaceView> {
                                                             CrossAxisAlignment
                                                                 .start,
                                                         children: [
-                                                          Text(
-                                                            'Temperature',
-                                                            style: AppTextStyle
-                                                                .poppinsMedium15
-                                                                .copyWith(
-                                                              color: AppColors
-                                                                  .secondaryColors,
+                                                          SizedBox(
+                                                            width: screenWidth *
+                                                                0.25,
+                                                            child: Text(
+                                                              'Temp',
+                                                              style: AppTextStyle
+                                                                  .poppinsMedium15
+                                                                  .copyWith(
+                                                                color: AppColors
+                                                                    .secondaryColors,
+                                                              ),
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
                                                             ),
                                                           ),
                                                           SizedBox(
@@ -402,17 +426,25 @@ class _AboutPlaceViewState extends ConsumerState<AboutPlaceView> {
                                                                 screenHeight *
                                                                     0.01,
                                                           ),
-                                                          Text(
-                                                            weatherDetails.main!
-                                                                    .toString()
-                                                                    .isEmpty
-                                                                ? ""
-                                                                : '${double.parse((weatherDetails.main!.temp! - 273.15).toStringAsFixed(3))}°C',
-                                                            style: AppTextStyle
-                                                                .poppinsMedium15
-                                                                .copyWith(
-                                                              color: AppColors
-                                                                  .secondaryColors,
+                                                          SizedBox(
+                                                            width: screenWidth *
+                                                                0.25,
+                                                            child: Text(
+                                                              weatherDetails
+                                                                      .main!
+                                                                      .toString()
+                                                                      .isEmpty
+                                                                  ? ""
+                                                                  : '${double.parse((weatherDetails.main!.temp! - 273.15).toStringAsFixed(3))}°C',
+                                                              style: AppTextStyle
+                                                                  .poppinsMedium15
+                                                                  .copyWith(
+                                                                color: AppColors
+                                                                    .secondaryColors,
+                                                              ),
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
                                                             ),
                                                           ),
                                                         ],
@@ -422,13 +454,20 @@ class _AboutPlaceViewState extends ConsumerState<AboutPlaceView> {
                                                             CrossAxisAlignment
                                                                 .start,
                                                         children: [
-                                                          Text(
-                                                            'Feels Like',
-                                                            style: AppTextStyle
-                                                                .poppinsMedium15
-                                                                .copyWith(
-                                                              color: AppColors
-                                                                  .secondaryColors,
+                                                          SizedBox(
+                                                            width: screenWidth *
+                                                                0.25,
+                                                            child: Text(
+                                                              'Feels Like',
+                                                              style: AppTextStyle
+                                                                  .poppinsMedium15
+                                                                  .copyWith(
+                                                                color: AppColors
+                                                                    .secondaryColors,
+                                                              ),
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
                                                             ),
                                                           ),
                                                           SizedBox(
@@ -436,17 +475,25 @@ class _AboutPlaceViewState extends ConsumerState<AboutPlaceView> {
                                                                 screenHeight *
                                                                     0.01,
                                                           ),
-                                                          Text(
-                                                            weatherDetails.main!
-                                                                    .toString()
-                                                                    .isEmpty
-                                                                ? ""
-                                                                : '${double.parse((weatherDetails.main!.feelsLike! - 273.15).toStringAsFixed(3))}°C',
-                                                            style: AppTextStyle
-                                                                .poppinsMedium15
-                                                                .copyWith(
-                                                              color: AppColors
-                                                                  .secondaryColors,
+                                                          SizedBox(
+                                                            width: screenWidth *
+                                                                0.25,
+                                                            child: Text(
+                                                              weatherDetails
+                                                                      .main!
+                                                                      .toString()
+                                                                      .isEmpty
+                                                                  ? ""
+                                                                  : '${double.parse((weatherDetails.main!.feelsLike! - 273.15).toStringAsFixed(3))}°C',
+                                                              style: AppTextStyle
+                                                                  .poppinsMedium15
+                                                                  .copyWith(
+                                                                color: AppColors
+                                                                    .secondaryColors,
+                                                              ),
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
                                                             ),
                                                           ),
                                                         ],
@@ -456,13 +503,20 @@ class _AboutPlaceViewState extends ConsumerState<AboutPlaceView> {
                                                             CrossAxisAlignment
                                                                 .start,
                                                         children: [
-                                                          Text(
-                                                            'Min',
-                                                            style: AppTextStyle
-                                                                .poppinsMedium15
-                                                                .copyWith(
-                                                              color: AppColors
-                                                                  .secondaryColors,
+                                                          SizedBox(
+                                                            width: screenWidth *
+                                                                0.25,
+                                                            child: Text(
+                                                              'Humidity',
+                                                              style: AppTextStyle
+                                                                  .poppinsMedium15
+                                                                  .copyWith(
+                                                                color: AppColors
+                                                                    .secondaryColors,
+                                                              ),
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
                                                             ),
                                                           ),
                                                           SizedBox(
@@ -470,17 +524,87 @@ class _AboutPlaceViewState extends ConsumerState<AboutPlaceView> {
                                                                 screenHeight *
                                                                     0.01,
                                                           ),
-                                                          Text(
-                                                            weatherDetails.main!
-                                                                    .toString()
-                                                                    .isEmpty
-                                                                ? ""
-                                                                : '${double.parse((weatherDetails.main!.tempMin! - 273.15).toStringAsFixed(3))}°C',
-                                                            style: AppTextStyle
-                                                                .poppinsMedium15
-                                                                .copyWith(
-                                                              color: AppColors
-                                                                  .secondaryColors,
+                                                          SizedBox(
+                                                            width: screenWidth *
+                                                                0.25,
+                                                            child: Text(
+                                                              weatherDetails
+                                                                      .main!
+                                                                      .toString()
+                                                                      .isEmpty
+                                                                  ? ""
+                                                                  : '${weatherDetails.main!.humidity!} %',
+                                                              style: AppTextStyle
+                                                                  .poppinsMedium15
+                                                                  .copyWith(
+                                                                color: AppColors
+                                                                    .secondaryColors,
+                                                              ),
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  SizedBox(
+                                                    height: screenHeight * 0.03,
+                                                  ),
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          SizedBox(
+                                                            width: screenWidth *
+                                                                0.25,
+                                                            child: Text(
+                                                              'Pressure',
+                                                              style: AppTextStyle
+                                                                  .poppinsMedium15
+                                                                  .copyWith(
+                                                                color: AppColors
+                                                                    .secondaryColors,
+                                                              ),
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                            ),
+                                                          ),
+                                                          SizedBox(
+                                                            height:
+                                                                screenHeight *
+                                                                    0.01,
+                                                          ),
+                                                          SizedBox(
+                                                            width: screenWidth *
+                                                                0.25,
+                                                            child: Text(
+                                                              weatherDetails
+                                                                      .main!
+                                                                      .toString()
+                                                                      .isEmpty
+                                                                  ? ""
+                                                                  : '${weatherDetails.main!.pressure!} mb',
+                                                              style: AppTextStyle
+                                                                  .poppinsMedium15
+                                                                  .copyWith(
+                                                                color: AppColors
+                                                                    .secondaryColors,
+                                                              ),
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
                                                             ),
                                                           ),
                                                         ],
@@ -490,13 +614,20 @@ class _AboutPlaceViewState extends ConsumerState<AboutPlaceView> {
                                                             CrossAxisAlignment
                                                                 .start,
                                                         children: [
-                                                          Text(
-                                                            'Max',
-                                                            style: AppTextStyle
-                                                                .poppinsMedium15
-                                                                .copyWith(
-                                                              color: AppColors
-                                                                  .secondaryColors,
+                                                          SizedBox(
+                                                            width: screenWidth *
+                                                                0.25,
+                                                            child: Text(
+                                                              'Weather',
+                                                              style: AppTextStyle
+                                                                  .poppinsMedium15
+                                                                  .copyWith(
+                                                                color: AppColors
+                                                                    .secondaryColors,
+                                                              ),
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
                                                             ),
                                                           ),
                                                           SizedBox(
@@ -504,17 +635,209 @@ class _AboutPlaceViewState extends ConsumerState<AboutPlaceView> {
                                                                 screenHeight *
                                                                     0.01,
                                                           ),
-                                                          Text(
-                                                            weatherDetails.main!
-                                                                    .toString()
-                                                                    .isEmpty
-                                                                ? ""
-                                                                : '${double.parse((weatherDetails.main!.tempMax! - 273.15).toStringAsFixed(3))}°C',
-                                                            style: AppTextStyle
-                                                                .poppinsMedium15
-                                                                .copyWith(
-                                                              color: AppColors
-                                                                  .secondaryColors,
+                                                          SizedBox(
+                                                            width: screenWidth *
+                                                                0.25,
+                                                            child: Text(
+                                                              '${weatherDetails.weather![0].description}',
+                                                              style: AppTextStyle
+                                                                  .poppinsMedium15
+                                                                  .copyWith(
+                                                                color: AppColors
+                                                                    .secondaryColors,
+                                                              ),
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          SizedBox(
+                                                            width: screenWidth *
+                                                                0.25,
+                                                            child: Text(
+                                                              'Visibility',
+                                                              style: AppTextStyle
+                                                                  .poppinsMedium15
+                                                                  .copyWith(
+                                                                color: AppColors
+                                                                    .secondaryColors,
+                                                              ),
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                            ),
+                                                          ),
+                                                          SizedBox(
+                                                            height:
+                                                                screenHeight *
+                                                                    0.01,
+                                                          ),
+                                                          SizedBox(
+                                                            width: screenWidth *
+                                                                0.25,
+                                                            child: Text(
+                                                              '${(weatherDetails.visibility)! / 1000} km',
+                                                              style: AppTextStyle
+                                                                  .poppinsMedium15
+                                                                  .copyWith(
+                                                                color: AppColors
+                                                                    .secondaryColors,
+                                                              ),
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  SizedBox(
+                                                    height: screenHeight * 0.03,
+                                                  ),
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          SizedBox(
+                                                            width: screenWidth *
+                                                                0.25,
+                                                            child: Text(
+                                                              'Cloud Cover',
+                                                              style: AppTextStyle
+                                                                  .poppinsMedium15
+                                                                  .copyWith(
+                                                                color: AppColors
+                                                                    .secondaryColors,
+                                                              ),
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                            ),
+                                                          ),
+                                                          SizedBox(
+                                                            height:
+                                                                screenHeight *
+                                                                    0.01,
+                                                          ),
+                                                          SizedBox(
+                                                            width: screenWidth *
+                                                                0.25,
+                                                            child: Text(
+                                                              '${weatherDetails.clouds!.all!} %',
+                                                              style: AppTextStyle
+                                                                  .poppinsMedium15
+                                                                  .copyWith(
+                                                                color: AppColors
+                                                                    .secondaryColors,
+                                                              ),
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          SizedBox(
+                                                            width: screenWidth *
+                                                                0.25,
+                                                            child: Text(
+                                                              'Wind Speed',
+                                                              style: AppTextStyle
+                                                                  .poppinsMedium15
+                                                                  .copyWith(
+                                                                color: AppColors
+                                                                    .secondaryColors,
+                                                              ),
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                            ),
+                                                          ),
+                                                          SizedBox(
+                                                            height:
+                                                                screenHeight *
+                                                                    0.01,
+                                                          ),
+                                                          SizedBox(
+                                                            width: screenWidth *
+                                                                0.25,
+                                                            child: Text(
+                                                              '${weatherDetails.wind!.speed!} m/s',
+                                                              style: AppTextStyle
+                                                                  .poppinsMedium15
+                                                                  .copyWith(
+                                                                color: AppColors
+                                                                    .secondaryColors,
+                                                              ),
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          SizedBox(
+                                                            width: screenWidth *
+                                                                0.25,
+                                                            child: Text(
+                                                              'Wind deg',
+                                                              style: AppTextStyle
+                                                                  .poppinsMedium15
+                                                                  .copyWith(
+                                                                color: AppColors
+                                                                    .secondaryColors,
+                                                              ),
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                            ),
+                                                          ),
+                                                          SizedBox(
+                                                            height:
+                                                                screenHeight *
+                                                                    0.01,
+                                                          ),
+                                                          SizedBox(
+                                                            width: screenWidth *
+                                                                0.25,
+                                                            child: Text(
+                                                              '${weatherDetails.wind!.deg} °',
+                                                              style: AppTextStyle
+                                                                  .poppinsMedium15
+                                                                  .copyWith(
+                                                                color: AppColors
+                                                                    .secondaryColors,
+                                                              ),
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
                                                             ),
                                                           ),
                                                         ],
