@@ -12,7 +12,9 @@
       "path/to/place1_photo3.jpg"
     ],
     "place_video": "path/to/place1_video.mp4",
-    "isWatchListed" : false
+    "isWatchListed" : false,
+    "lat" : "29.5239",
+    "lon" : "82.0788"
   },
   {
     "id": 2,
@@ -27,8 +29,9 @@
       "path/to/place2_photo3.jpg"
     ],
     "place_video": "path/to/place2_video.mp4",
-    "isWatchListed" : false
-
+    "isWatchListed" : false,
+    "lat" : "29.5239",
+    "lon" : "82.0788"
   },
   {
     "id": 3,
@@ -43,7 +46,9 @@
       "path/to/place3_photo3.jpg"
     ],
     "place_video": "path/to/place3_video.mp4",
-    "isWatchListed" : false
+    "isWatchListed" : false,
+    "lat" : "29.5239",
+    "lon" : "82.0788"
 
   },
   {
@@ -59,7 +64,9 @@
       "path/to/place4_photo3.jpg"
     ],
     "place_video": "path/to/place4_video.mp4",
-    "isWatchListed" : false
+    "isWatchListed" : false,
+    "lat" : "29.5239",
+    "lon" : "82.0788"
 
   }
 ]

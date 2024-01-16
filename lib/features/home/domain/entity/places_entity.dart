@@ -13,8 +13,9 @@ class PlacesDetails {
   String? placeDescription;
   List<String>? placePhoto;
   String? placeVideo;
-
   bool? isWatchListed;
+  String? lat;
+  String? lon;
 
   PlacesDetails({
     this.id,
@@ -26,6 +27,8 @@ class PlacesDetails {
     this.placePhoto,
     this.placeVideo,
     this.isWatchListed,
+    this.lat,
+    this.lon,
   });
 
   PlacesDetails.fromJson(Map<String, dynamic> json) {
@@ -38,6 +41,8 @@ class PlacesDetails {
     placePhoto = json['place_photo'].cast<String>();
     placeVideo = json['place_video'];
     isWatchListed = json['isWatchListed'];
+    lat = json['lat'];
+    lon = json['lon'];
   }
 
   Map<String, dynamic> toJson() {
@@ -51,6 +56,8 @@ class PlacesDetails {
     data['place_photo'] = placePhoto;
     data['place_video'] = placeVideo;
     data['isWatchListed'] = isWatchListed;
+    data['lat'] = lat;
+    data['lon'] = lon;
     return data;
   }
 
@@ -64,10 +71,12 @@ class PlacesDetails {
     placePhoto = [];
     placeVideo = '';
     isWatchListed = false;
+    lat = '';
+    lon = '';
   }
 
   @override
   String toString() {
-    return 'id: $id placeImage: $placeImage, placeTitle: $placeTitle, placeRating: $placeRating, placeLocation: $placeLocation, placeDescription: $placeDescription, placePhoto: $placePhoto, placeVideo: $placeVideo, isWatchListed: $isWatchListed';
+    return 'id: $id placeImage: $placeImage, placeTitle: $placeTitle, placeRating: $placeRating, placeLocation: $placeLocation, placeDescription: $placeDescription, placePhoto: $placePhoto, placeVideo: $placeVideo, isWatchListed: $isWatchListed, lat: $lat, lon: $lon';
   }
 }
