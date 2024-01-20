@@ -70,16 +70,22 @@ class WatchListRemoteDataSource {
     }
   }
 
-  Future<Either<Failure, bool>> createWatchlist(int id) async {
+  Future<Either<Failure, bool>> createWatchlist(
+      int id, String title, String poster) async {
     try {
       String? token;
       await userSharedPrefs.getUserToken().then(
             (value) => value.fold((l) => null, (r) => token = r!),
           );
 
-      String watchlistEndpoint = '${ApiEndpoints.createWatchlist}/$id';
+      String watchlistEndpoint = ApiEndpoints.createWatchlist;
       var response = await dio.post(
         watchlistEndpoint,
+        data: {
+          'id': id.toString(),
+          'title': title,
+          'poster': poster,
+        },
         options: Options(
           headers: {'Authorization': 'Bearer $token'},
         ),
@@ -103,7 +109,7 @@ class WatchListRemoteDataSource {
     }
   }
 
-  Future<Either<Failure, bool>> deleteWatchlist(int id) async {
+  Future<Either<Failure, bool>> deleteWatchlist(String id) async {
     try {
       String? token;
       await userSharedPrefs.getUserToken().then(

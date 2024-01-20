@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../config/constants/app_color_theme.dart';
 import '../../../../config/constants/app_textstyle_theme.dart';
 import '../../../home/presentation/widget/drawer.dart';
+import '../viewmodel/watchlist_view_model.dart';
 
 class WatchListView extends ConsumerStatefulWidget {
   const WatchListView({super.key});
@@ -15,10 +16,40 @@ class WatchListView extends ConsumerStatefulWidget {
 class _WatchListViewState extends ConsumerState<WatchListView> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
+  final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
+      GlobalKey<RefreshIndicatorState>();
+
+  // Function to reload the data when the user triggers a refresh.
+  Future<void> _handleRefresh() async {
+    // Implement the logic to reload the data here.
+    ref.watch(watchListViewModelProvider.notifier).getWatchList();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final watchlistState = ref.watch(watchListViewModelProvider);
+
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
+
+    if (watchlistState.isLoading) {
+      return Scaffold(
+        body: Center(
+          child: RotationTransition(
+            turns: Tween(begin: 0.0, end: 1.0).animate(
+              CurvedAnimation(
+                parent: const AlwaysStoppedAnimation(0.0),
+                curve: Curves.linear,
+              ),
+            ),
+            child: CircularProgressIndicator(
+              color: AppColors.ratingColors,
+              backgroundColor: AppColors.ratingColors,
+            ),
+          ),
+        ),
+      );
+    }
 
     return Scaffold(
       key: _scaffoldKey,
@@ -101,6 +132,84 @@ class _WatchListViewState extends ConsumerState<WatchListView> {
           ],
         ),
       ),
+      body: watchlistState.watchList!.isNotEmpty
+          ? RefreshIndicator(
+              key: _refreshIndicatorKey,
+              onRefresh: _handleRefresh,
+              child: Padding(
+                padding: EdgeInsets.only(
+                  left: screenWidth * 0.05,
+                  right: screenWidth * 0.05,
+                  top: screenHeight * 0.02,
+                ),
+                child: ListView(
+                  children: [
+                    GridView.builder(
+                      itemCount: watchlistState.watchList!.length,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 20,
+                        mainAxisSpacing: 5,
+                      ),
+                      itemBuilder: (context, index) {
+                        return Column(
+                          children: [
+                            Container(
+                              height: screenHeight * 0.125,
+                              width: screenWidth * 0.3,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                image: DecorationImage(
+                                  image: NetworkImage(
+                                    watchlistState
+                                        .watchList![index].placeDetails.poster,
+                                  ),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: screenHeight * 0.01,
+                            ),
+                            Text(
+                              watchlistState
+                                  .watchList![index].placeDetails.title,
+                              style: AppTextStyle.poppinsSemiBold15.copyWith(
+                                color: AppColors.secondaryColors,
+                              ),
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            )
+          : RefreshIndicator(
+              key: _refreshIndicatorKey,
+              onRefresh: _handleRefresh,
+              child: ListView(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: screenWidth * 0.05,
+                      right: screenWidth * 0.05,
+                      top: screenHeight * 0.02,
+                    ),
+                    child: Text(
+                      'No destinations in your bookmarks yet!',
+                      style: AppTextStyle.poppinsSemiBold20.copyWith(
+                        color: AppColors.ratingColors,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
     );
   }
 }

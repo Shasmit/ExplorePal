@@ -35,9 +35,9 @@ class WatchListViewModel extends StateNotifier<WatchListState> {
     );
   }
 
-  createWatchlist(int id) async {
+  createWatchlist(int id, String title, String poster) async {
     state = state.copyWith(isLoading: true);
-    final result = await watchListUseCase.createWatchlist(id);
+    final result = await watchListUseCase.createWatchlist(id, title, poster);
     result.fold(
       (failure) => state = state.copyWith(
         isLoading: false,
@@ -50,7 +50,7 @@ class WatchListViewModel extends StateNotifier<WatchListState> {
     );
   }
 
-  deleteWatchlist(int id) async {
+  deleteWatchlist(String id) async {
     state = state.copyWith(isLoading: true);
     final result = await watchListUseCase.deleteWatchlist(id);
     result.fold(

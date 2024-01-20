@@ -20,12 +20,13 @@ class WatchListRemoteRepositoryImpl implements IWatchListRepository {
   });
 
   @override
-  Future<Either<Failure, bool>> createWatchlist(int id) {
-    return watchListRemoteDataSource.createWatchlist(id);
+  Future<Either<Failure, bool>> createWatchlist(
+      int id, String title, String poster) {
+    return watchListRemoteDataSource.createWatchlist(id, title, poster);
   }
 
   @override
-  Future<Either<Failure, bool>> deleteWatchlist(int id) {
+  Future<Either<Failure, bool>> deleteWatchlist(String id) {
     return watchListRemoteDataSource.deleteWatchlist(id);
   }
 

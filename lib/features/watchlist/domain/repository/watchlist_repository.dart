@@ -10,7 +10,8 @@ final watchListRepositoryProvider = Provider<IWatchListRepository>(
 );
 
 abstract class IWatchListRepository {
-  Future<Either<Failure, bool>> createWatchlist(int id);
-  Future<Either<Failure, bool>> deleteWatchlist(int id);
+  Future<Either<Failure, bool>> createWatchlist(
+      int id, String title, String poster);
+  Future<Either<Failure, bool>> deleteWatchlist(String id);
   Future<Either<Failure, List<WatchListEntity>>> getWatchList();
 }

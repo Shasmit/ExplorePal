@@ -18,14 +18,8 @@ class WatchListApiModel extends Equatable {
   @JsonKey(name: 'user')
   final String user;
 
-  @JsonKey(name: 'movieId')
-  final String movieId;
-
-  @JsonKey(name: 'movieDetails')
-  final MovieDetailsApiModel movieDetails;
-
-  @JsonKey(name: 'timestamp')
-  final String timestamp;
+  @JsonKey(name: 'placeDetails')
+  final PlaceDetailsApiModel placeDetails;
 
   @JsonKey(name: '__v')
   final int v;
@@ -33,9 +27,7 @@ class WatchListApiModel extends Equatable {
   const WatchListApiModel({
     required this.id,
     required this.user,
-    required this.movieId,
-    required this.movieDetails,
-    required this.timestamp,
+    required this.placeDetails,
     required this.v,
   });
 
@@ -47,28 +39,22 @@ class WatchListApiModel extends Equatable {
   factory WatchListApiModel.empty() => WatchListApiModel(
         id: '',
         user: '',
-        movieId: '',
-        movieDetails: MovieDetailsApiModel.empty(),
-        timestamp: '',
+        placeDetails: PlaceDetailsApiModel.empty(),
         v: 0,
       );
 
   WatchListEntity toEntity() => WatchListEntity(
         id: id,
         user: user,
-        movieId: movieId,
-        movieDetails: movieDetails.toEntity(),
-        timestamp: timestamp,
+        placeDetails: placeDetails.toEntity(),
         v: v,
       );
 
   WatchListApiModel fromEntity(WatchListEntity entity) => WatchListApiModel(
         id: entity.id,
         user: entity.user,
-        movieId: entity.movieId,
-        movieDetails:
-            MovieDetailsApiModel.empty().fromEntity(entity.movieDetails),
-        timestamp: entity.timestamp,
+        placeDetails:
+            PlaceDetailsApiModel.empty().fromEntity(entity.placeDetails),
         v: entity.v,
       );
 
@@ -79,60 +65,66 @@ class WatchListApiModel extends Equatable {
   List<Object?> get props => [
         id,
         user,
-        movieId,
-        movieDetails,
-        timestamp,
+        placeDetails,
         v,
       ];
 }
 
 @JsonSerializable()
-class MovieDetailsApiModel extends Equatable {
+class PlaceDetailsApiModel extends Equatable {
   @JsonKey(name: 'title')
   final String title;
 
-  @JsonKey(name: 'poster_path')
-  final String posterPath;
+  @JsonKey(name: 'poster')
+  final String poster;
 
-  @JsonKey(name: '_id')
+  @JsonKey(name: 'id')
   final String id;
 
-  const MovieDetailsApiModel({
+  @JsonKey(name: '_id')
+  final String iid;
+
+  const PlaceDetailsApiModel({
     required this.title,
-    required this.posterPath,
+    required this.poster,
     required this.id,
+    required this.iid,
   });
 
-  factory MovieDetailsApiModel.fromJson(Map<String, dynamic> json) =>
-      _$MovieDetailsApiModelFromJson(json);
+  factory PlaceDetailsApiModel.fromJson(Map<String, dynamic> json) =>
+      _$PlaceDetailsApiModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$MovieDetailsApiModelToJson(this);
+  Map<String, dynamic> toJson() => _$PlaceDetailsApiModelToJson(this);
 
-  factory MovieDetailsApiModel.empty() => const MovieDetailsApiModel(
+  factory PlaceDetailsApiModel.empty() => const PlaceDetailsApiModel(
         title: '',
-        posterPath: '',
+        poster: '',
         id: '',
+        iid: '',
       );
 
-  MovieDetails toEntity() => MovieDetails(
+  PlaceDetails toEntity() => PlaceDetails(
         title: title,
-        posterPath: posterPath,
+        poster: poster,
         id: id,
+        iid: iid,
       );
 
-  MovieDetailsApiModel fromEntity(MovieDetails entity) => MovieDetailsApiModel(
+  PlaceDetailsApiModel fromEntity(PlaceDetails entity) => PlaceDetailsApiModel(
         title: entity.title,
-        posterPath: entity.posterPath,
+        poster: entity.poster,
         id: entity.id,
+        iid: entity.iid,
       );
 
-  List<MovieDetails> toEntityList(List<MovieDetailsApiModel> models) =>
+  List<PlaceDetails> toEntityList(List<PlaceDetailsApiModel> models) =>
       models.map((model) => model.toEntity()).toList();
 
   @override
   List<Object?> get props => [
         title,
-        posterPath,
+        poster,
         id,
+        iid,
       ];
 }

@@ -10,10 +10,8 @@ WatchListApiModel _$WatchListApiModelFromJson(Map<String, dynamic> json) =>
     WatchListApiModel(
       id: json['_id'] as String,
       user: json['user'] as String,
-      movieId: json['movieId'] as String,
-      movieDetails: MovieDetailsApiModel.fromJson(
-          json['movieDetails'] as Map<String, dynamic>),
-      timestamp: json['timestamp'] as String,
+      placeDetails: PlaceDetailsApiModel.fromJson(
+          json['placeDetails'] as Map<String, dynamic>),
       v: json['__v'] as int,
     );
 
@@ -21,24 +19,24 @@ Map<String, dynamic> _$WatchListApiModelToJson(WatchListApiModel instance) =>
     <String, dynamic>{
       '_id': instance.id,
       'user': instance.user,
-      'movieId': instance.movieId,
-      'movieDetails': instance.movieDetails,
-      'timestamp': instance.timestamp,
+      'placeDetails': instance.placeDetails.toJson(),
       '__v': instance.v,
     };
 
-MovieDetailsApiModel _$MovieDetailsApiModelFromJson(
+PlaceDetailsApiModel _$PlaceDetailsApiModelFromJson(
         Map<String, dynamic> json) =>
-    MovieDetailsApiModel(
+    PlaceDetailsApiModel(
       title: json['title'] as String,
-      posterPath: json['poster_path'] as String,
-      id: json['_id'] as String,
+      poster: json['poster'] as String,
+      id: json['id'] as String,
+      iid: json['_id'] as String,
     );
 
-Map<String, dynamic> _$MovieDetailsApiModelToJson(
-        MovieDetailsApiModel instance) =>
+Map<String, dynamic> _$PlaceDetailsApiModelToJson(
+        PlaceDetailsApiModel instance) =>
     <String, dynamic>{
       'title': instance.title,
-      'poster_path': instance.posterPath,
-      '_id': instance.id,
+      'poster': instance.poster,
+      'id': instance.id,
+      '_id': instance.iid,
     };

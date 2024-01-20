@@ -3,17 +3,13 @@ import 'package:equatable/equatable.dart';
 class WatchListEntity extends Equatable {
   final String id;
   final String user;
-  final String movieId;
-  final MovieDetails movieDetails;
-  final String timestamp;
+  final PlaceDetails placeDetails;
   final int v;
 
   const WatchListEntity({
     required this.id,
     required this.user,
-    required this.movieId,
-    required this.movieDetails,
-    required this.timestamp,
+    required this.placeDetails,
     required this.v,
   });
 
@@ -21,8 +17,7 @@ class WatchListEntity extends Equatable {
   List<Object?> get props => [
         id,
         user,
-        movieId,
-        timestamp,
+        placeDetails,
         v,
       ];
 
@@ -30,56 +25,58 @@ class WatchListEntity extends Equatable {
       WatchListEntity(
         id: json["_id"],
         user: json["user"],
-        movieId: json["movieId"],
-        movieDetails: MovieDetails.fromJson(json["movieDetails"]),
-        timestamp: json["timestamp"],
+        placeDetails: PlaceDetails.fromJson(json["placeDetails"]),
         v: json["__v"],
       );
 
   Map<String, dynamic> toJson() => {
         "_id": id,
         "user": user,
-        "movieId": movieId,
-        "movieDetails": movieDetails.toJson(),
-        "timestamp": timestamp,
+        "placeDetails": placeDetails.toJson(),
         "__v": v,
       };
 }
 
-class MovieDetails extends Equatable {
+class PlaceDetails extends Equatable {
   final String title;
-  final String posterPath;
+  final String poster;
   final String id;
+  final String iid;
 
-  const MovieDetails({
+  const PlaceDetails({
     required this.title,
-    required this.posterPath,
+    required this.poster,
     required this.id,
+    required this.iid,
   });
 
-  const MovieDetails.empty()
+  const PlaceDetails.empty()
       : this(
           title: '',
-          posterPath: '',
+          poster: '',
           id: '',
+          iid: '',
         );
 
-  factory MovieDetails.fromJson(Map<String, dynamic> json) => MovieDetails(
+  factory PlaceDetails.fromJson(Map<String, dynamic> json) => PlaceDetails(
         title: json["title"],
-        posterPath: json["poster_path"],
-        id: json["_id"],
+        poster: json["poster"],
+        id: json["id"],
+        iid: json["_id"],
       );
 
   Map<String, dynamic> toJson() => {
         "title": title,
-        "poster_path": posterPath,
-        "_id": id,
+        "poster": poster,
+        "id": id,
+        "_id": iid,
       };
 
   @override
   List<Object?> get props => [
         title,
-        posterPath,
+        poster,
         id,
+        iid,
       ];
 }

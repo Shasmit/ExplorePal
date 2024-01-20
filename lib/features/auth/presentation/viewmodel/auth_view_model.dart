@@ -56,7 +56,11 @@ class AuthViewModel extends StateNotifier<AuthState> {
       },
       (success) {
         state = state.copyWith(isLoading: false, error: null);
-        Navigator.pushNamed(context, AppRoute.dashboardRoute);
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          '/dashboard',
+          (route) => false,
+        );
 
         showSnackBar(
           message: 'Login successfully',

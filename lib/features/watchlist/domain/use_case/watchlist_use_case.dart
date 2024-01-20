@@ -18,11 +18,12 @@ class WatchListUseCase {
     required this.watchListRepository,
   });
 
-  Future<Either<Failure, bool>> createWatchlist(int id) {
-    return watchListRepository.createWatchlist(id);
+  Future<Either<Failure, bool>> createWatchlist(
+      int id, String title, String poster) {
+    return watchListRepository.createWatchlist(id, title, poster);
   }
 
-  Future<Either<Failure, bool>> deleteWatchlist(int id) {
+  Future<Either<Failure, bool>> deleteWatchlist(String id) {
     return watchListRepository.deleteWatchlist(id);
   }
 
