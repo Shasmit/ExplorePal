@@ -1,10 +1,11 @@
 import 'package:crystal_navigation_bar/crystal_navigation_bar.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:exploree_pal/config/constants/app_color_theme.dart';
-import 'package:exploree_pal/features/home/presentation/view/dash2.dart';
 import 'package:exploree_pal/features/home/presentation/view/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../../watchlist/presentation/view/watchlist_view.dart';
 
 class BottomNavView extends ConsumerStatefulWidget {
   const BottomNavView({super.key});
@@ -19,7 +20,7 @@ class _BottomNavViewState extends ConsumerState<BottomNavView> {
   int index = 0;
   final screens = [
     const DashBoardView(),
-    const DashboardV(),
+    const WatchListView(),
     const DashBoardView(),
   ];
 
