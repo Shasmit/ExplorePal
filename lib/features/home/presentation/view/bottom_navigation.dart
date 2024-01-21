@@ -5,6 +5,7 @@ import 'package:exploree_pal/features/home/presentation/view/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../profile/presentation/view/profile_view.dart';
 import '../../../watchlist/presentation/view/watchlist_view.dart';
 
 class BottomNavView extends ConsumerStatefulWidget {
@@ -21,7 +22,7 @@ class _BottomNavViewState extends ConsumerState<BottomNavView> {
   final screens = [
     const DashBoardView(),
     const WatchListView(),
-    const DashBoardView(),
+    const ProfileView(),
   ];
 
   @override

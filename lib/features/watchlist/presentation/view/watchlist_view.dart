@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../config/constants/api_endpoint.dart';
 import '../../../../config/constants/app_color_theme.dart';
 import '../../../../config/constants/app_textstyle_theme.dart';
 import '../../../home/presentation/widget/drawer.dart';
+import '../../../profile/presentation/viewmodel/profile_view_model.dart';
 import '../viewmodel/watchlist_view_model.dart';
 
 class WatchListView extends ConsumerStatefulWidget {
@@ -23,16 +25,18 @@ class _WatchListViewState extends ConsumerState<WatchListView> {
   Future<void> _handleRefresh() async {
     // Implement the logic to reload the data here.
     ref.watch(watchListViewModelProvider.notifier).getWatchList();
+    ref.watch(profileViewModelProvider.notifier).getUserProfile();
   }
 
   @override
   Widget build(BuildContext context) {
     final watchlistState = ref.watch(watchListViewModelProvider);
+    final profileState = ref.watch(profileViewModelProvider);
 
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
-    if (watchlistState.isLoading) {
+    if (watchlistState.isLoading || profileState.isLoading) {
       return Scaffold(
         body: Center(
           child: RotationTransition(
@@ -43,7 +47,7 @@ class _WatchListViewState extends ConsumerState<WatchListView> {
               ),
             ),
             child: CircularProgressIndicator(
-              color: AppColors.ratingColors,
+              color: AppColors.bodyColors,
               backgroundColor: AppColors.ratingColors,
             ),
           ),
@@ -99,8 +103,20 @@ class _WatchListViewState extends ConsumerState<WatchListView> {
                   child: CircleAvatar(
                     radius: 20,
                     backgroundColor: AppColors.bodyColors,
-                    foregroundImage: const AssetImage(
-                      "assets/icons/user.png",
+                    foregroundColor: Colors.transparent,
+                    child: ClipOval(
+                      child: profileState.user[0].image != null
+                          ? Image.network(
+                              // Use Image.network for API-provided image
+                              '${ApiEndpoints.baseUrl}/uploads/${profileState.user[0].image}',
+                              fit: BoxFit.cover,
+                              width: 100.0,
+                              height: 100.0,
+                            )
+                          : Image.asset(
+                              "assets/icons/user.png",
+                              fit: BoxFit.cover,
+                            ),
                     ),
                   ),
                 ),

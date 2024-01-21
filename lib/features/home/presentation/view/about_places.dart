@@ -3,7 +3,6 @@ import 'package:exploree_pal/features/home/domain/entity/places_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../config/constants/app_textstyle_theme.dart';
 import '../../../../core/common/widget/injection_container.dart';
@@ -28,19 +27,10 @@ class _AboutPlaceViewState extends ConsumerState<AboutPlaceView> {
   String lat = '27.7172';
   String lon = '85.3240';
 
-  watchListCase() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool? isWatchListed = prefs.getBool('isWatchListed');
-    if (isWatchListed != null) {
-      placesDetails!.isWatchListed = isWatchListed;
-    }
-  }
-
   @override
   void didChangeDependencies() {
     placesDetails =
         ModalRoute.of(context)!.settings.arguments as PlacesDetails?;
-    watchListCase();
     super.didChangeDependencies();
   }
 
@@ -136,19 +126,6 @@ class _AboutPlaceViewState extends ConsumerState<AboutPlaceView> {
                                         setState(() {
                                           placesDetails!.isWatchListed =
                                               !placesDetails!.isWatchListed!;
-
-                                          final Future<SharedPreferences>
-                                              prefs =
-                                              SharedPreferences.getInstance();
-
-                                          prefs.then(
-                                            (value) => {
-                                              value.setBool(
-                                                'isWatchListed',
-                                                placesDetails!.isWatchListed!,
-                                              )
-                                            },
-                                          );
                                         });
 
                                         ref
