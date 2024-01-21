@@ -196,6 +196,7 @@ class _WatchListViewState extends ConsumerState<WatchListView> {
                               style: AppTextStyle.poppinsSemiBold15.copyWith(
                                 color: AppColors.secondaryColors,
                               ),
+                              textAlign: TextAlign.center,
                             ),
                           ],
                         );

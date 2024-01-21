@@ -2,69 +2,69 @@
   {
     "id": 1,
     "place_image": "https://picknepal.com/wp-content/uploads/2020/06/Rara-Lake-1.jpg",
-    "place_title": "Serenity Lake",
+    "place_title": "Rara Lake",
     "place_rating": 4.7,
-    "place_location": "Tranquil Valley, ABC",
-    "place_description": "Rara Lake lies at an elevation of 2,990 m (9,810 ft), has a water surface of 10.8 km2 (4.2 sq mi), a maximum depth of 167 m (548 ft), is 5.1 km (3.2 mi) long and 2.7 km (1.7 mi) wide. It drains into the Mugu Karnali River via the Nijar River.[7] Its water quality is characterized by high pH, conductivity and total hardness. It has been classified as oligotrophic as it is slightly polluted.[8] The lake changes its colour up to 5 times a day depending on the climate.[9][10][11] Rara Lake is surrounded by thickly forested hills named Chuchemara Danda at 4,087 meters and Murma at 3630m",
+    "place_location": "Mugu, Nepal",
+    "place_description": "Rara Lake lies at an elevation of 2,990 m (9,810 ft), has a water surface of 10.8 km2 (4.2 sq mi), a maximum depth of 167 m (548 ft), is 5.1 km (3.2 mi) long and 2.7 km (1.7 mi) wide. It drains into the Mugu Karnali River via the Nijar River.[7] Its water quality is characterized by high pH, conductivity and total hardness.",
     "place_photo": [
-      "path/to/place1_photo1.jpg",
-      "path/to/place1_photo2.jpg",
-      "path/to/place1_photo3.jpg"
+      "https://www.friendsadventure.com/images/other-region/jumla-rara-lake-trek.jpg",
+      "https://www.wellplantrekking.com/wp-content/uploads/2018/10/raralakejumala.jpg",
+      "https://radianttreks.com/wp-content/uploads/2020/04/Best-time-to-visit-Rara-Lake.jpg"
     ],
-    "place_video": "path/to/place1_video.mp4",
+    "place_video": "qiYKD1FZ5YM",
     "isWatchListed" : false,
     "lat" : "29.5239",
     "lon" : "82.0788"
   },
   {
     "id": 2,
-    "place_image": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Rara_lake%2C_Mugu.jpg",
-    "place_title": "Historic Castle",
+    "place_image": "https://muktinathtempletour.com/wp-content/uploads/2018/09/temple-with-snow.jpg",
+    "place_title": "Muktinath Temple",
     "place_rating": 4.5,
-    "place_location": "Medieval Town, XYZ",
-    "place_description": "An ancient castle with rich history and stunning architecture.",
+    "place_location": "Mustang, Nepal",
+    "place_description": "Muktinath is a Vishnu temple, sacred to both Hindus and Buddhists, located in the Muktinath Valley at the foot of the Thorong La mountain pass in Mustang. Behind the temple is a semi-circular wall with 108 stone faucets at a height of seven feet.",
     "place_photo": [
-      "path/to/place2_photo1.jpg",
-      "path/to/place2_photo2.jpg",
-      "path/to/place2_photo3.jpg"
+      "https://www.trekinnepal.com/public/images/upload/blog/muktinath-darshan-yatra86.jpg",
+      "https://www.holidaystonepal.in/media/files/Muktinath/Muktinath-Tour-Package-by-Drive-2.png",
+      "https://myrepublica.nagariknetwork.com/uploads/media/Muktinath_Temple.jpg"
     ],
-    "place_video": "path/to/place2_video.mp4",
+    "place_video": "csaQc_qpn8U",
     "isWatchListed" : false,
-    "lat" : "29.5239",
-    "lon" : "82.0788"
+    "lat" : "28.8169",
+    "lon" : "83.8718"
   },
   {
     "id": 3,
-    "place_image": "https://web.nepalnews.com/storage/story/1024/image_1607335331_1024.jpg",
-    "place_title": "Skyline Viewpoint",
+    "place_image": "https://www.natureloverstrek.com/pagegallery/everything-you-need-to-know-about-khaptad-national-park-%7C-interesting-things-about-khaptad-national-park16.jpg",
+    "place_title": "Khaptad national Park",
     "place_rating": 4.8,
-    "place_location": "City Heights, PQR",
-    "place_description": "A high vantage point offering breathtaking views of the city skyline.",
+    "place_location": "Khaptad, Nepal",
+    "place_description": "Khaptad National Park is a protected area in the Far-western region of Nepal. It stretches over four districts of the region namely Bajhang, Bajura, Achham, and Doti. It covers an area of 225 sq km and ranges in elevation from 1400 m to 3300 m.",
     "place_photo": [
-      "path/to/place3_photo1.jpg",
-      "path/to/place3_photo2.jpg",
-      "path/to/place3_photo3.jpg"
+      "https://visitsnepal.com/wp-content/uploads/2021/01/Khaptad-National-Park-west-nepal.jpg",
+      "https://www.wildernessexcursion.com/uploads/img/khaptad-trek.jpg",
+      "https://himalayanconnections.com/wp-content/uploads/2021/01/khaptad-1.jpg"
     ],
-    "place_video": "path/to/place3_video.mp4",
+    "place_video": "h6Ocify-CUA",
     "isWatchListed" : false,
-    "lat" : "29.5239",
-    "lon" : "82.0788"
+    "lat" : "29.3783",
+    "lon" : "81.1417"
   },
   {
     "id": 4,
-    "place_image": "https://imagepasal.com/wp-content/uploads/2022/03/F3EE020E-07D4-4F08-8E9D-D5FB9F7A0B4B-image-pasal-2022-03-15.jpeg",
-    "place_title": "Enchanted Forest",
+    "place_image": "https://www.hotelmechicrown.com/storage/experiences/shree-antu-visit/1647777525.webp",
+    "place_title": "Shree Antu",
     "place_rating": 4.6,
-    "place_location": "Mystical Woods, LMN",
-    "place_description": "A magical forest with ancient trees and hidden wonders.",
+    "place_location": "Illam, Nepal",
+    "place_description": "Shree Antu, one of nature's wonders in Ilam, Nepal, a heavenly place on the outskirts of Darjeeling, India, and south of Kanchenjunga. Shree Antu is a popular tourist destination best known as the place to observe sunrise and is known for its tea gardens.",
     "place_photo": [
-      "path/to/place4_photo1.jpg",
-      "path/to/place4_photo2.jpg",
-      "path/to/place4_photo3.jpg"
+      "https://www.hotelmechicrown.com/storage/experiences/shree-antu-visit/main/thumbs/medium_1647777260.webp",
+      "https://summithotelillam.com/assets/img/news-details/news-details6.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Shree_antu_pond.jpg/1200px-Shree_antu_pond.jpg"
     ],
-    "place_video": "path/to/place4_video.mp4",
+    "place_video": "wo49Dd5tiDE",
     "isWatchListed" : false,
-    "lat" : "29.5239",
-    "lon" : "82.0788"
+    "lat" : "26.8904",
+    "lon" : "88.1194"
   }
 ]

@@ -127,8 +127,20 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                   child: CircleAvatar(
                     radius: 20,
                     backgroundColor: AppColors.bodyColors,
-                    foregroundImage: const AssetImage(
-                      "assets/icons/user.png",
+                    foregroundColor: Colors.transparent,
+                    child: ClipOval(
+                      child: profileState.user[0].image != null
+                          ? Image.network(
+                              // Use Image.network for API-provided image
+                              '${ApiEndpoints.baseUrl}/uploads/${profileState.user[0].image}',
+                              fit: BoxFit.cover,
+                              width: 100.0,
+                              height: 100.0,
+                            )
+                          : Image.asset(
+                              "assets/icons/user.png",
+                              fit: BoxFit.cover,
+                            ),
                     ),
                   ),
                 ),
@@ -174,7 +186,6 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
               SizedBox(
                 height: screenHeight * 0.2,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     InkWell(
@@ -191,7 +202,7 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                           builder: (context) => Padding(
                             padding: const EdgeInsets.all(20),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 ElevatedButton.icon(
                                   onPressed: () {
@@ -220,6 +231,7 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                         );
                       },
                       child: Container(
+                        width: screenWidth * 0.25,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
@@ -250,16 +262,19 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                         ),
                       ),
                     ),
+                    SizedBox(
+                      width: screenWidth * 0.05,
+                    ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'John Doe',
+                          profileState.user[0].username,
                           style: AppTextStyle.poppinsMedium15,
                         ),
                         Text(
-                          'shasmitbasnet@gmail.com',
+                          profileState.user[0].email,
                           style: AppTextStyle.poppinsMedium15
                               .copyWith(color: const Color(0xff6F7789)),
                         ),

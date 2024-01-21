@@ -18,6 +18,15 @@ class BottomNavView extends ConsumerStatefulWidget {
 class _BottomNavViewState extends ConsumerState<BottomNavView> {
   final navigationKey = GlobalKey<CurvedNavigationBarState>();
 
+  // @override
+  // void initState() {
+  //   WidgetsBinding.instance.addPostFrameCallback((_) {
+  //     ref.read(profileViewModelProvider.notifier).getUserProfile();
+  //     ref.read(watchListViewModelProvider.notifier).getWatchList();
+  //   });
+  //   super.initState();
+  // }
+
   int index = 0;
   final screens = [
     const DashBoardView(),

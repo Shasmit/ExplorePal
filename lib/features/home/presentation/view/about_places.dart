@@ -1,8 +1,10 @@
 import 'package:exploree_pal/config/constants/app_color_theme.dart';
 import 'package:exploree_pal/features/home/domain/entity/places_entity.dart';
+import 'package:exploree_pal/features/home/presentation/widget/image_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../../../../config/constants/app_textstyle_theme.dart';
 import '../../../../core/common/widget/injection_container.dart';
@@ -345,8 +347,71 @@ class _AboutPlaceViewState extends ConsumerState<AboutPlaceView> {
                                             ),
                                           ],
                                         ),
-                                        const Text('Photos'),
-                                        const Text('Videos'),
+                                        GridView.builder(
+                                          itemCount:
+                                              placesDetails!.placePhoto!.length,
+                                          shrinkWrap: true,
+                                          physics:
+                                              const NeverScrollableScrollPhysics(),
+                                          gridDelegate:
+                                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                            crossAxisCount: 3,
+                                            crossAxisSpacing: 10,
+                                            mainAxisSpacing: 10,
+                                          ),
+                                          itemBuilder: (context, index) {
+                                            return GestureDetector(
+                                              onTap: () {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        ImageView(
+                                                      imageUrl: placesDetails!
+                                                          .placePhoto![index],
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                              child: Container(
+                                                height: screenHeight * 0.125,
+                                                width: screenWidth * 0.3,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(20),
+                                                  image: DecorationImage(
+                                                    image: NetworkImage(
+                                                      placesDetails!
+                                                          .placePhoto![index],
+                                                    ),
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                        Column(
+                                          children: [
+                                            YoutubePlayer(
+                                              controller:
+                                                  YoutubePlayerController(
+                                                initialVideoId:
+                                                    placesDetails!.placeVideo!,
+                                                flags: const YoutubePlayerFlags(
+                                                  autoPlay: true,
+                                                  mute: false,
+                                                ),
+                                              ),
+                                              showVideoProgressIndicator: true,
+                                              progressColors:
+                                                  const ProgressBarColors(
+                                                playedColor: Colors.amber,
+                                                handleColor: Colors.amberAccent,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                         weatherDetails.main == null
                                             ? Center(
                                                 child: Text(

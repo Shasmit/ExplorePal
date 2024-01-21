@@ -1,15 +1,18 @@
 import 'package:exploree_pal/config/constants/app_color_theme.dart';
 import 'package:exploree_pal/config/constants/app_textstyle_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class DrawerView extends StatefulWidget {
+import '../../../profile/presentation/viewmodel/logout_view_model.dart';
+
+class DrawerView extends ConsumerStatefulWidget {
   const DrawerView({super.key});
 
   @override
-  State<DrawerView> createState() => _DrawerViewState();
+  ConsumerState<DrawerView> createState() => _DrawerViewState();
 }
 
-class _DrawerViewState extends State<DrawerView> {
+class _DrawerViewState extends ConsumerState<DrawerView> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -51,19 +54,11 @@ class _DrawerViewState extends State<DrawerView> {
               ),
             ),
             tiles(
-              'Dashboard',
-              Icons.home_filled,
-              () {},
-            ),
-            tiles(
-              'WatchList',
-              Icons.bookmark,
-              () {},
-            ),
-            tiles(
-              'Profile',
-              Icons.person,
-              () {},
+              'Log-Out',
+              Icons.logout_rounded,
+              () {
+                ref.read(logoutViewModelProvider.notifier).logout(context);
+              },
             ),
           ],
         ),

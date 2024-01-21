@@ -211,331 +211,324 @@ class _DashBoardViewState extends ConsumerState<DashBoardView> {
                 builder: (context, state) {
               return TabBarView(
                 children: [
-                  RefreshIndicator(
-                    key: _refreshIndicatorKey,
-                    onRefresh: _handleRefresh,
-                    child: ListView(
-                      children: [
-                        SizedBox(
-                          width: screenWidth * 0.9,
-                          height: screenHeight * 0.33,
-                          child: ListView.builder(
-                            itemCount: placesDetails.length,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding: EdgeInsets.only(
-                                  left: screenWidth * 0.05,
-                                  top: screenHeight * 0.02,
-                                ),
-                                child: GestureDetector(
-                                  onTap: () {
-                                    Navigator.pushNamed(
-                                      context,
-                                      AppRoute.aboutPlacesRoute,
-                                      arguments: placesDetails[index],
-                                    );
-                                  },
-                                  child: Container(
-                                    width: screenWidth * 0.8,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      color: Colors.white,
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsets.all(
-                                        screenWidth * 0.03,
-                                      ),
-                                      child: Column(
-                                        children: [
-                                          Container(
-                                            width: screenWidth * 0.8,
-                                            height: screenHeight * 0.2,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(15),
-                                              image: DecorationImage(
-                                                image: NetworkImage(
-                                                  placesDetails.isEmpty
-                                                      ? "https://picknepal.com/wp-content/uploads/2020/06/Rara-Lake-1.jpg"
-                                                      : placesDetails[index]
-                                                          .placeImage!,
-                                                ),
-                                                fit: BoxFit.cover,
-                                              ),
-                                              color: Colors.red,
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height: screenHeight * 0.01,
-                                          ),
-                                          Padding(
-                                            padding: EdgeInsets.only(
-                                              left: screenWidth * 0.02,
-                                              right: screenWidth * 0.02,
-                                            ),
-                                            child: Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Text(
-                                                  placesDetails.isEmpty
-                                                      ? ""
-                                                      : placesDetails[index]
-                                                          .placeTitle!,
-                                                  style: AppTextStyle
-                                                      .poppinsSemiBold18,
-                                                ),
-                                                Row(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.center,
-                                                  children: [
-                                                    Icon(
-                                                      Icons.star,
-                                                      size: 20,
-                                                      color: AppColors
-                                                          .ratingColors,
-                                                    ),
-                                                    SizedBox(
-                                                      width: screenWidth * 0.01,
-                                                    ),
-                                                    Text(
-                                                      placesDetails.isEmpty
-                                                          ? ""
-                                                          : placesDetails[index]
-                                                              .placeRating
-                                                              .toString(),
-                                                      style: AppTextStyle
-                                                          .poppinsMedium18
-                                                          .copyWith(
-                                                        color: AppColors
-                                                            .secondaryColors,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height: screenHeight * 0.01,
-                                          ),
-                                          Padding(
-                                            padding: EdgeInsets.only(
-                                              left: screenWidth * 0.01,
-                                            ),
-                                            child: Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Row(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.center,
-                                                  children: [
-                                                    Icon(
-                                                      Icons.location_on,
-                                                      size: 20,
-                                                      color: AppColors
-                                                          .ratingColors,
-                                                    ),
-                                                    SizedBox(
-                                                      width: screenWidth * 0.01,
-                                                    ),
-                                                    Text(
-                                                      placesDetails.isEmpty
-                                                          ? ""
-                                                          : placesDetails[index]
-                                                              .placeLocation!,
-                                                      style: AppTextStyle
-                                                          .poppinsMedium15
-                                                          .copyWith(
-                                                        color: AppColors
-                                                            .secondaryColors,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
+                  ListView(
+                    children: [
+                      SizedBox(
+                        width: screenWidth * 0.9,
+                        height: screenHeight * 0.33,
+                        child: ListView.builder(
+                          itemCount: placesDetails.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: EdgeInsets.only(
+                                left: screenWidth * 0.05,
+                                top: screenHeight * 0.02,
+                              ),
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                    context,
+                                    AppRoute.aboutPlacesRoute,
+                                    arguments: placesDetails[index],
+                                  );
+                                },
+                                child: Container(
+                                  width: screenWidth * 0.8,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Colors.white,
                                   ),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                            left: screenWidth * 0.06,
-                            top: screenHeight * 0.03,
-                          ),
-                          child: Text(
-                            'Top Places',
-                            style: AppTextStyle.poppinsMedium18.copyWith(
-                              color: AppColors.secondaryColors,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: screenWidth,
-                          height: screenHeight * 0.35,
-                          child: ListView.builder(
-                            itemCount: placesDetails.length,
-                            scrollDirection: Axis.vertical,
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding: EdgeInsets.only(
-                                  left: screenWidth * 0.05,
-                                  top: screenHeight * 0.02,
-                                  right: screenWidth * 0.05,
-                                ),
-                                child: GestureDetector(
-                                  onTap: () {
-                                    Navigator.pushNamed(
-                                      context,
-                                      AppRoute.aboutPlacesRoute,
-                                      arguments: placesDetails[index],
-                                    );
-                                  },
-                                  child: Container(
-                                    height: screenHeight * 0.15,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      color: Colors.white,
+                                  child: Padding(
+                                    padding: EdgeInsets.all(
+                                      screenWidth * 0.03,
                                     ),
-                                    child: Row(
+                                    child: Column(
                                       children: [
-                                        Padding(
-                                          padding: EdgeInsets.only(
-                                            left: screenWidth * 0.025,
-                                            right: screenWidth * 0.01,
-                                            top: screenHeight * 0.02,
-                                            bottom: screenHeight * 0.02,
-                                          ),
-                                          child: Container(
-                                            width: screenWidth * 0.2,
-                                            height: screenHeight * 0.2,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                              image: DecorationImage(
-                                                image: NetworkImage(
-                                                  placesDetails[index]
-                                                      .placeImage!,
-                                                ),
-                                                fit: BoxFit.cover,
+                                        Container(
+                                          width: screenWidth * 0.8,
+                                          height: screenHeight * 0.2,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                            image: DecorationImage(
+                                              image: NetworkImage(
+                                                placesDetails.isEmpty
+                                                    ? "https://picknepal.com/wp-content/uploads/2020/06/Rara-Lake-1.jpg"
+                                                    : placesDetails[index]
+                                                        .placeImage!,
                                               ),
-                                              color: Colors.red,
+                                              fit: BoxFit.cover,
                                             ),
+                                            color: Colors.red,
                                           ),
                                         ),
                                         SizedBox(
-                                          width: screenWidth * 0.02,
+                                          height: screenHeight * 0.01,
                                         ),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              placesDetails.isEmpty
-                                                  ? ""
-                                                  : placesDetails[index]
-                                                      .placeTitle!,
-                                              style: AppTextStyle
-                                                  .poppinsMedium18
-                                                  .copyWith(
-                                                color: AppColors
-                                                    .buttonNavBarColors,
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                            left: screenWidth * 0.02,
+                                            right: screenWidth * 0.02,
+                                          ),
+                                          child: Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                placesDetails.isEmpty
+                                                    ? ""
+                                                    : placesDetails[index]
+                                                        .placeTitle!,
+                                                style: AppTextStyle
+                                                    .poppinsSemiBold18,
                                               ),
-                                            ),
-                                            SizedBox(
-                                              height: screenHeight * 0.005,
-                                            ),
-                                            Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              children: [
-                                                Icon(
-                                                  Icons.location_on,
-                                                  size: 16,
-                                                  color: AppColors.ratingColors,
-                                                ),
-                                                SizedBox(
-                                                  width: screenWidth * 0.01,
-                                                ),
-                                                Text(
-                                                  placesDetails.isEmpty
-                                                      ? ""
-                                                      : placesDetails[index]
-                                                          .placeLocation!,
-                                                  style: AppTextStyle
-                                                      .poppinsMedium15
-                                                      .copyWith(
-                                                    fontSize: 12,
-                                                    color: AppColors
-                                                        .secondaryColors,
+                                              Row(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  Icon(
+                                                    Icons.star,
+                                                    size: 20,
+                                                    color:
+                                                        AppColors.ratingColors,
                                                   ),
-                                                ),
-                                              ],
-                                            ),
-                                            SizedBox(
-                                              height: screenHeight * 0.005,
-                                            ),
-                                            Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              children: [
-                                                Icon(
-                                                  Icons.star,
-                                                  size: 16,
-                                                  color: AppColors.ratingColors,
-                                                ),
-                                                SizedBox(
-                                                  width: screenWidth * 0.01,
-                                                ),
-                                                Text(
-                                                  placesDetails.isEmpty
-                                                      ? ""
-                                                      : placesDetails[index]
-                                                          .placeRating
-                                                          .toString(),
-                                                  style: AppTextStyle
-                                                      .poppinsMedium18
-                                                      .copyWith(
-                                                    color: AppColors
-                                                        .secondaryColors,
-                                                    fontSize: 12,
+                                                  SizedBox(
+                                                    width: screenWidth * 0.01,
                                                   ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
+                                                  Text(
+                                                    placesDetails.isEmpty
+                                                        ? ""
+                                                        : placesDetails[index]
+                                                            .placeRating
+                                                            .toString(),
+                                                    style: AppTextStyle
+                                                        .poppinsMedium18
+                                                        .copyWith(
+                                                      color: AppColors
+                                                          .secondaryColors,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: screenHeight * 0.01,
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                            left: screenWidth * 0.01,
+                                          ),
+                                          child: Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Row(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  Icon(
+                                                    Icons.location_on,
+                                                    size: 20,
+                                                    color:
+                                                        AppColors.ratingColors,
+                                                  ),
+                                                  SizedBox(
+                                                    width: screenWidth * 0.01,
+                                                  ),
+                                                  Text(
+                                                    placesDetails.isEmpty
+                                                        ? ""
+                                                        : placesDetails[index]
+                                                            .placeLocation!,
+                                                    style: AppTextStyle
+                                                        .poppinsMedium15
+                                                        .copyWith(
+                                                      color: AppColors
+                                                          .secondaryColors,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ],
                                     ),
                                   ),
                                 ),
-                              );
-                            },
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: screenWidth * 0.06,
+                          top: screenHeight * 0.03,
+                        ),
+                        child: Text(
+                          'Top Places',
+                          style: AppTextStyle.poppinsMedium18.copyWith(
+                            color: AppColors.secondaryColors,
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                      SizedBox(
+                        width: screenWidth,
+                        height: screenHeight * 0.35,
+                        child: ListView.builder(
+                          itemCount: placesDetails.length,
+                          scrollDirection: Axis.vertical,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: EdgeInsets.only(
+                                left: screenWidth * 0.05,
+                                top: screenHeight * 0.02,
+                                right: screenWidth * 0.05,
+                              ),
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                    context,
+                                    AppRoute.aboutPlacesRoute,
+                                    arguments: placesDetails[index],
+                                  );
+                                },
+                                child: Container(
+                                  height: screenHeight * 0.15,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Colors.white,
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                          left: screenWidth * 0.025,
+                                          right: screenWidth * 0.01,
+                                          top: screenHeight * 0.02,
+                                          bottom: screenHeight * 0.02,
+                                        ),
+                                        child: Container(
+                                          width: screenWidth * 0.2,
+                                          height: screenHeight * 0.2,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            image: DecorationImage(
+                                              image: NetworkImage(
+                                                placesDetails[index]
+                                                    .placeImage!,
+                                              ),
+                                              fit: BoxFit.cover,
+                                            ),
+                                            color: Colors.red,
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: screenWidth * 0.02,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            placesDetails.isEmpty
+                                                ? ""
+                                                : placesDetails[index]
+                                                    .placeTitle!,
+                                            style: AppTextStyle.poppinsMedium18
+                                                .copyWith(
+                                              color:
+                                                  AppColors.buttonNavBarColors,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: screenHeight * 0.005,
+                                          ),
+                                          Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Icon(
+                                                Icons.location_on,
+                                                size: 16,
+                                                color: AppColors.ratingColors,
+                                              ),
+                                              SizedBox(
+                                                width: screenWidth * 0.01,
+                                              ),
+                                              Text(
+                                                placesDetails.isEmpty
+                                                    ? ""
+                                                    : placesDetails[index]
+                                                        .placeLocation!,
+                                                style: AppTextStyle
+                                                    .poppinsMedium15
+                                                    .copyWith(
+                                                  fontSize: 12,
+                                                  color:
+                                                      AppColors.secondaryColors,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            height: screenHeight * 0.005,
+                                          ),
+                                          Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Icon(
+                                                Icons.star,
+                                                size: 16,
+                                                color: AppColors.ratingColors,
+                                              ),
+                                              SizedBox(
+                                                width: screenWidth * 0.01,
+                                              ),
+                                              Text(
+                                                placesDetails.isEmpty
+                                                    ? ""
+                                                    : placesDetails[index]
+                                                        .placeRating
+                                                        .toString(),
+                                                style: AppTextStyle
+                                                    .poppinsMedium18
+                                                    .copyWith(
+                                                  color:
+                                                      AppColors.secondaryColors,
+                                                  fontSize: 12,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
                   ),
                   ListView(
                     children: [
