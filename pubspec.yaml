@@ -61,6 +61,10 @@ dependencies:
   get_it: ^7.6.6
   http: ^1.1.2
   youtube_player_flutter: ^9.0.0-beta.0
+  google_maps_flutter: ^2.5.3
+  location: ^5.0.3
+  flutter_polyline_points: ^2.0.0
+
 
 
 dev_dependencies:

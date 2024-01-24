@@ -23,14 +23,6 @@ class _DashBoardViewState extends ConsumerState<DashBoardView> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   final PlaceDetailsBloc _blocReference = sl<PlaceDetailsBloc>();
-  final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
-      GlobalKey<RefreshIndicatorState>();
-
-  // Function to reload the data when the user triggers a refresh.
-  Future<void> _handleRefresh() async {
-    // Implement the logic to reload the data here.
-    ref.watch(profileViewModelProvider.notifier).getUserProfile();
-  }
 
   List<PlacesDetails> placesDetails = [];
 

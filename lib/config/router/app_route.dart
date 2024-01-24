@@ -1,6 +1,7 @@
 import 'package:exploree_pal/features/auth/presentation/view/login_view.dart';
 import 'package:exploree_pal/features/auth/presentation/view/register_view.dart';
 import 'package:exploree_pal/features/home/presentation/view/about_places.dart';
+import 'package:exploree_pal/features/home/presentation/widget/route_map.dart';
 import 'package:exploree_pal/features/splash/presentation/view/splash_screen_view.dart';
 
 import '../../features/home/presentation/view/bottom_navigation.dart';
@@ -14,6 +15,7 @@ class AppRoute {
   static const String registerRoute = '/register';
   static const String dashboardRoute = '/dashboard';
   static const String aboutPlacesRoute = '/aboutPlaces';
+  static const String mapRoute = '/mapRoute';
 
   static getApplicationRoute() {
     return {
@@ -22,6 +24,7 @@ class AppRoute {
       registerRoute: (context) => const RegisterViews(),
       dashboardRoute: (context) => const BottomNavView(),
       aboutPlacesRoute: (context) => const AboutPlaceView(),
+      mapRoute: (context) => const RouteMapView(),
     };
   }
 }

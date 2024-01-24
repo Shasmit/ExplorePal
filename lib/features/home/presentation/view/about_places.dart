@@ -1,9 +1,15 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:exploree_pal/config/constants/app_color_theme.dart';
+import 'package:exploree_pal/config/router/app_route.dart';
 import 'package:exploree_pal/features/home/domain/entity/places_entity.dart';
 import 'package:exploree_pal/features/home/presentation/widget/image_view.dart';
+import 'package:exploree_pal/features/home/presentation/widget/static.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:location/location.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../../../../config/constants/app_textstyle_theme.dart';
@@ -29,6 +35,12 @@ class _AboutPlaceViewState extends ConsumerState<AboutPlaceView> {
   String lat = '27.7172';
   String lon = '85.3240';
 
+  Location location = Location();
+  bool locationPermissionGranted = false;
+
+  String? currentLat;
+  String? currentLon;
+
   @override
   void didChangeDependencies() {
     placesDetails =
@@ -37,10 +49,39 @@ class _AboutPlaceViewState extends ConsumerState<AboutPlaceView> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    _checkLocationPermission();
+  }
+
+  Future<void> _checkLocationPermission() async {
+    bool serviceEnabled = await location.serviceEnabled();
+    if (!serviceEnabled) {
+      serviceEnabled = await location.requestService();
+      if (!serviceEnabled) {
+        return;
+      }
+    }
+
+    PermissionStatus permissionStatus = await location.hasPermission();
+    if (permissionStatus == PermissionStatus.denied) {
+      permissionStatus = await location.requestPermission();
+      if (permissionStatus != PermissionStatus.granted) {
+        return;
+      }
+    }
+
+    setState(() {
+      locationPermissionGranted = true;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     final watchlistState = ref.watch(watchListViewModelProvider);
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
+    print(locationPermissionGranted);
 
     return Scaffold(
       backgroundColor: AppColors.bodyColors,
@@ -60,6 +101,7 @@ class _AboutPlaceViewState extends ConsumerState<AboutPlaceView> {
             if (state is WeatherLoaded) {
               const CircularProgressIndicator();
               weatherDetails = state.weatherDetails;
+
               setState(() {});
             }
           },
@@ -321,7 +363,73 @@ class _AboutPlaceViewState extends ConsumerState<AboutPlaceView> {
                                                 height: screenHeight * 0.06,
                                                 width: double.infinity,
                                                 child: ElevatedButton(
-                                                  onPressed: () {},
+                                                  onPressed: () async {
+                                                    if (locationPermissionGranted ==
+                                                        true) {
+                                                      showDialog(
+                                                        context: context,
+                                                        builder: (BuildContext
+                                                            context) {
+                                                          return CupertinoAlertDialog(
+                                                              title: Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                        .all(
+                                                                        8.0),
+                                                                child: Text(
+                                                                  "Fetching Location",
+                                                                  style: AppTextStyle
+                                                                      .poppinsSemiBold18,
+                                                                ),
+                                                              ),
+                                                              content:
+                                                                  CupertinoActivityIndicator(
+                                                                color: AppColors
+                                                                    .ratingColors,
+                                                                radius: 10,
+                                                              ));
+                                                        },
+                                                        barrierDismissible:
+                                                            false, // Prevent users from closing the dialog
+                                                      );
+                                                      try {
+                                                        LocationData
+                                                            locationData =
+                                                            await location
+                                                                .getLocation();
+                                                        StaticVariable
+                                                                .currentLat =
+                                                            locationData
+                                                                .latitude
+                                                                .toString();
+                                                        StaticVariable
+                                                                .currentLon =
+                                                            locationData
+                                                                .longitude
+                                                                .toString();
+                                                        Navigator.pop(context);
+
+                                                        Navigator.pushNamed(
+                                                          context,
+                                                          AppRoute.mapRoute,
+                                                          arguments: {
+                                                            'lat':
+                                                                placesDetails!
+                                                                    .lat!,
+                                                            'lon':
+                                                                placesDetails!
+                                                                    .lon!,
+                                                            'title':
+                                                                placesDetails!
+                                                                    .placeTitle!,
+                                                          },
+                                                        );
+                                                      } catch (e) {
+                                                        print('error: $e');
+                                                        Navigator.pop(context);
+                                                      }
+                                                    }
+                                                  },
                                                   style:
                                                       ElevatedButton.styleFrom(
                                                     backgroundColor:
