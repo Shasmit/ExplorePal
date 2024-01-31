@@ -23,7 +23,7 @@ class _LoginViewsState extends ConsumerState<LoginViews> {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
+    // final screenWidth = MediaQuery.of(context).size.width;
 
     SizedBox gap() {
       return SizedBox(

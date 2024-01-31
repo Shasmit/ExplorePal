@@ -33,7 +33,7 @@ class _RegisterViewsState extends ConsumerState<RegisterViews> {
     // final authState = ref.watch(authViewModelProvider);
 
     final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
+    // final screenWidth = MediaQuery.of(context).size.width;
 
     SizedBox gapa() {
       return SizedBox(
