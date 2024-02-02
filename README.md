@@ -58,8 +58,5 @@ To unlock the full potential of ExplorePal, you need to set up the ExplorePal AP
 
    The API is now ready to serve data to your ExplorePal app.
 
-## Contribute
+## Thank youuu!
 
-Feel free to contribute to ExplorePal by opening issues, suggesting features, or submitting pull requests. Let's make travel experiences unforgettable together!
-
-Happy exploring! 🌎✨
