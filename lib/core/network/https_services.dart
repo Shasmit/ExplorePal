@@ -13,7 +13,8 @@ class HttpsServices {
         ),
         headers: {
           'X-RapidAPI-Key':
-              '79e2c7b495mshe55c89711b47a28p1eb1bejsn96348472f60d',
+              '29fbf802ebmsh3746cbcf0e72495p16717ajsn4353d8508c69',
+          'X-RapidAPI-Host': 'open-weather13.p.rapidapi.com',
         },
       );
       return response;
